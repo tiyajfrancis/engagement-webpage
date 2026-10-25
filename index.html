@@ -138,7 +138,7 @@
 
   /* 03 — Beige save-the-date; the landscape art is extracted from Mockup 3's scenic lower edge. */
   .details-section{--next-paper:var(--terracotta);--deckle-mask:url('assets/deckle-to-terracotta.svg');background:var(--beige);color:var(--ink)}
-  .details-landscape{position:absolute;left:0;right:0;bottom:20px;height:clamp(150px,21vw,280px);z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--beige) 0%,rgba(245,237,225,.66) 18%,rgba(245,237,225,0) 50%),url('assets/mockup3-details-landscape.webp') center bottom/100% 100% no-repeat;opacity:.82;mix-blend-mode:multiply;mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 100%)}
+  .details-landscape{position:absolute;left:0;right:0;bottom:20px;height:clamp(150px,21vw,280px);z-index:1;pointer-events:none;background-image:linear-gradient(to bottom,var(--beige) 0%,rgba(245,237,225,.66) 18%,rgba(245,237,225,0) 50%),url('assets/mockup3-details-landscape.webp');background-position:center,center bottom;background-size:100% 100%,100% auto;background-repeat:no-repeat,no-repeat;opacity:.82;mix-blend-mode:multiply;mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 100%)}
   .details-section .section-inner{min-height:730px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding-top:clamp(62px,7.5vw,100px);padding-bottom:clamp(210px,24vw,300px)}
   .details-section .micro{color:#785035;margin-bottom:12px}
   .details-script{margin:0;color:var(--terracotta);font-size:clamp(50px,7vw,90px);line-height:1.03}
@@ -334,7 +334,7 @@
     .count-item{padding:11px 4px 10px;border-radius:4px 4px 13px 13px}
     .count-number{font-size:clamp(20px,5.5vw,27px)}
     .count-label{font-size:9px;letter-spacing:.04em}
-    .details-landscape{height:190px;bottom:15px;background-size:auto 100%,auto 100%;background-position:center bottom;opacity:.76}
+    .details-landscape{height:190px;bottom:15px;background-size:100% 100%,auto 100%;background-position:center,center bottom;opacity:.76}
     .details-section .leaf-top-left,.details-section .leaf-bottom-right{width:110px;opacity:.18}
     .venue-section .section-inner{min-height:auto;grid-template-columns:minmax(0,1fr);gap:34px;padding:64px 23px 94px}
     .venue-copy{text-align:center;margin-inline:auto;max-width:550px}
