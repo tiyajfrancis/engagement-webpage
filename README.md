@@ -1,20 +1,46 @@
-Arathy & Pranav — engagement invitation website (Draft 5)
+# Arathy & Pranav — engagement invitation
 
-Files
-- index.html: responsive single-page website with five sections: sage-green invitation cover, ivory story, beige name/date details, deep terracotta-brown venue, and charcoal RSVP. The footer has been removed.
-- assets/couple-frame-1.jpeg and couple-frame-2.jpeg: the exact supplied couple poses used for the repeating ring-reveal crossfade.
-- assets/couple-traditional-portrait.jpeg: the supplied portrait used in the story collage.
-- assets/venue-maps-qr.png: QR code for a Google Maps search for Prashanti Hotel, Kollam.
+Static, bilingual invitation with five sections: invitation, story, event details,
+venue and RSVP. The existing stationery design, photographs and animations are retained.
 
-Preview locally
-Open index.html in a modern browser. Keep the assets folder next to index.html. A self-contained HTML version is supplied separately and embeds all image assets.
+## Preview and deployment
 
-Deployment
-Static site intended for Cloudflare Pages Direct Upload. Upload the ZIP contents with index.html at the project root. A free pages.dev address will be assigned after deployment. A custom domain has not been purchased or connected.
+Open `index.html` in a modern browser with `assets/` beside it, or serve the
+repository with a local static server. The public invitation is hosted on GitHub Pages:
+https://tiyajfrancis.github.io/engagement-webpage/
 
-Notes
-- The venue photo is a labelled placeholder until a real venue photograph is supplied.
-- The RSVP form is a frontend preview only. It does not save or transmit responses yet; connect an RSVP destination before inviting guests to submit the form.
-- The Maps link currently searches for the venue by name and can be updated to the exact pin when confirmed.
+## Verified on 10 November 2026
 
-Update: Footer removed as requested. A fixed back-to-top arrow remains visible in the bottom corner on all pages. All text now uses a warm shimmering gold treatment.
+- The deployed HTML exactly matched the repository's default branch before these fixes.
+- Both Maps links and `assets/venue-maps-qr.png` use the same directions destination:
+  `8.877032,76.593229`. QR contents were decoded and compared with the links.
+  The couple must still confirm that this is the intended venue entrance.
+- The venue section uses an externally hosted hotel photograph, not a placeholder.
+  Its URL returned HTTP 200. Permission and a locally hosted copy remain to be resolved.
+- All referenced local assets exist.
+- Countdown uses 24 January 2027 at noon in India (`+05:30`). Event details still need approval.
+
+## RSVP — not connected
+
+No response storage or submission service is configured. Guest controls and the send
+button are disabled in HTML, including when JavaScript is unavailable. A notice in both
+languages explains that no responses are being collected. This is an interim safeguard,
+not a completed RSVP implementation.
+
+Before inviting guests, choose and connect either a private form response destination
+or a WhatsApp recipient. Test real delivery, error feedback and both languages before
+enabling the controls. Never show success without confirmation from the destination.
+
+## Remaining launch decisions
+
+- Confirm venue pin, full address, hall/entrance and organizer contact.
+- Confirm ceremony/arrival times and the Malayalam names and wording.
+- Choose RSVP method, recipient/storage destination, guest-count rules and any deadline.
+- Prepare sharing metadata/image and complete mobile/desktop visual QA.
+
+## Assets
+
+- `couple-frame-1.jpeg` and `couple-frame-2.jpeg`: alternating hero photographs.
+- `couple-traditional-portrait.jpeg`: story photograph.
+- `venue-maps-qr.png`: directions QR matching the Maps buttons.
+- Other images and SVGs provide the existing stationery and floral treatments.
