@@ -20,22 +20,23 @@ https://tiyajfrancis.github.io/engagement-webpage/
 - All referenced local assets exist.
 - Countdown uses 24 January 2027 at noon in India (`+05:30`). Event details still need approval.
 
-## RSVP — not connected
+## RSVP — private storage prepared, activation pending
 
-No response storage or submission service is configured. Guest controls and the send
-button are disabled in HTML, including when JavaScript is unavailable. A notice in both
-languages explains that no responses are being collected. This is an interim safeguard,
-not a completed RSVP implementation.
+The selected destination is a private Google Sheet, written by a Google Apps Script
+web app. Follow [backend/SETUP.md](backend/SETUP.md) for the owner's one-time setup.
+`rsvp-config.js` intentionally has an empty endpoint until deployment and real-delivery
+QA. The form remains disabled until configured. No credentials belong in this repo.
 
-Before inviting guests, choose and connect either a private form response destination
-or a WhatsApp recipient. Test real delivery, error feedback and both languages before
-enabling the controls. Never show success without confirmation from the destination.
+The implementation validates data on the server, stores declines as zero guests,
+neutralizes spreadsheet formulas and reuses response IDs to make retries safe.
+Only a readable success acknowledgement matching the response ID shows confirmation;
+failures preserve entered data. Status messages support English and Malayalam.
 
 ## Remaining launch decisions
 
 - Confirm venue pin, full address, hall/entrance and organizer contact.
 - Confirm ceremony/arrival times and the Malayalam names and wording.
-- Choose RSVP method, recipient/storage destination, guest-count rules and any deadline.
+- Activate private RSVP storage; confirm guest-count rules and any deadline.
 - Prepare sharing metadata/image and complete mobile/desktop visual QA.
 
 ## Assets
