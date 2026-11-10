@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#FDFBF7">
   <meta name="description" content="Join Arathy and Pranav to celebrate a new beginning on Sunday, 24 January 2027 in Kollam, Kerala.">
-  <meta property="og:title" content="Arathy & Pranav — A new beginning">
-  <meta property="og:description" content="Two main characters. One shared storyline. Join us on 24 January 2027.">
+  <meta property="og:title" content="Arathy &amp; Pranav — Engagement Invitation">
+  <meta property="og:description" content="Join us for our engagement on Sunday, 24 January 2027 at 12:00 PM in Kollam, Kerala.">
   <meta property="og:type" content="website">
-  <title>Arathy &amp; Pranav | A new beginning</title>
+  <meta property="og:url" content="https://tiyajfrancis.github.io/engagement-webpage/">
+  <meta property="og:image" content="https://tiyajfrancis.github.io/engagement-webpage/assets/couple-frame-1.jpeg">
+  <meta property="og:image:width" content="793">
+  <meta property="og:image:height" content="992">
+  <meta property="og:image:alt" content="Arathy and Pranav together">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://tiyajfrancis.github.io/engagement-webpage/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237A8B7B'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia' font-size='26' fill='%23FDFBF7'%3EAP%3C/text%3E%3C/svg%3E">
+  <title>Arathy &amp; Pranav | Engagement Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Sans+Malayalam:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
   :root {
     --terracotta:#A75D43;
@@ -430,6 +438,37 @@
   .venue-copy .micro{color:#F2D2AA}
   :where(.brand .star,.divider span,.story-kicker .star,.event-icon){text-shadow:0 0 1px rgba(255,239,199,.65),0 0 4px rgba(212,163,115,.24);animation:premium-gold-shimmer 3.2s ease-in-out infinite alternate}
   @keyframes premium-gold-shimmer{from{text-shadow:0 0 1px rgba(255,239,199,.4),0 0 2px rgba(212,163,115,.1)}to{text-shadow:0 0 2px rgba(255,239,199,.85),0 0 6px rgba(212,163,115,.32)}}
+
+  /* Practical text and Malayalam remain legible within the existing stationery design. */
+  .micro,.collage-caption,.story-kicker,.save-date-side,.save-date-month,
+  .count-label,.venue-city,.qr-link,.button-link{font-size:12px;letter-spacing:.06em}
+  .event-item strong{font-size:16px}
+  .event-item span,.time-line{font-size:14px;letter-spacing:.04em}
+  .hero .join-line,.hero .script-title,.hero .name,.hero .date-day{color:#FFF1DC}
+  .hero .main-title{color:var(--ivory)}
+  .languages button{min-width:44px;min-height:44px}
+  html[lang="ml"] body{font-family:"Noto Sans Malayalam",sans-serif}
+  html[lang="ml"] .script,html[lang="ml"] .rsvp-copy .display-title{font-family:"Noto Sans Malayalam",sans-serif;line-height:1.6}
+  html[lang="ml"] .name{white-space:normal;font-size:clamp(24px,4vw,48px);line-height:1.6}
+  html[lang="ml"] .section :is(h1,h2,h3,p,span){letter-spacing:normal;overflow-wrap:normal;word-break:normal}
+  html[lang="ml"] .countdown{gap:4px}
+  html[lang="ml"] .count-label{font-size:12px}
+  @media(max-width:900px){
+    .hero-heading{order:1}
+    .names{order:2;margin-top:0}
+    .date-strip{order:3;margin-top:20px}
+    .time-line{order:4;margin-top:12px}
+    .photo-frame{order:5;margin-top:28px}
+    .story-kicker{order:6}
+    .intro-line{order:7}
+    .hero .section-inner{padding-top:30px}
+  }
+  @media(max-width:420px){
+    .languages button{min-width:40px}
+    .header-right{gap:6px}
+    html[lang="ml"] .count-label{font-size:11px}
+    html[lang="ml"] .count-item{padding-inline:2px}
+  }
 </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -462,6 +501,7 @@
       <div class="hero-layout">
         <div class="hero-copy">
           <div class="hero-heading reveal">
+            <p class="micro" data-i18n="occasion">Engagement ceremony</p>
             <p class="join-line script" data-i18n="join">Join us</p>
             <h1 class="display-title main-title" id="main-title" data-i18n="celebrateHeadline">To celebrate</h1>
             <p class="script script-title" data-i18n="newBeginning">A new beginning</p>
@@ -596,7 +636,7 @@
       const targetTime = new Date('2027-01-24T12:00:00+05:30').getTime();
       const translations = {
         en: {
-          skip:'Skip to invitation', navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP',
+          occasion:'Engagement ceremony', skip:'Skip to invitation', navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP',
           join:'Join us', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
           detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTitle:'Engagement ceremony', eventTime:'12:00 PM', detailsNote:'Same people. Bigger celebrations.', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
@@ -605,7 +645,7 @@
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
         },
         ml: {
-          skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി',
+          occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി',
           join:'സ്നേഹത്തോടെ ക്ഷണിക്കുന്നു', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
           detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTitle:'വിവാഹനിശ്ചയം', eventTime:'ഉച്ചയ്ക്ക് 12:00', detailsNote:'ഒരേ ആളുകൾ. വലിയ ആഘോഷങ്ങൾ.', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
@@ -623,6 +663,7 @@
       function setLanguage(next) {
         if (!translations[next]) return;
         language = next;
+        try { localStorage.setItem('invitation-language', next); } catch (_) {}
         document.documentElement.lang = next;
         document.querySelectorAll('[data-i18n]').forEach(node => {
           const value = translations[next][node.dataset.i18n];
@@ -643,6 +684,8 @@
         langEn.setAttribute('aria-pressed', String(next === 'en'));
         langMl.setAttribute('aria-pressed', String(next === 'ml'));
         byId('countdown').setAttribute('aria-label', next === 'en' ? 'Countdown to the engagement' : 'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ');
+        menuToggle.setAttribute('aria-label', next === 'ml' ? (menuToggle.getAttribute('aria-expanded') === 'true' ? 'മെനു അടയ്ക്കുക' : 'മെനു തുറക്കുക') : (menuToggle.getAttribute('aria-expanded') === 'true' ? 'Close navigation' : 'Open navigation'));
+        byId('back-to-top').setAttribute('aria-label', next === 'ml' ? 'മുകളിലേക്ക് പോകുക' : 'Back to top');
         updateCountdown();
       }
       byId('back-to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
@@ -653,14 +696,21 @@
       menuToggle.addEventListener('click', () => {
         const open = menuToggle.getAttribute('aria-expanded') !== 'true';
         menuToggle.setAttribute('aria-expanded', String(open));
-        menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        menuToggle.setAttribute('aria-label', language === 'ml' ? (open ? 'മെനു അടയ്ക്കുക' : 'മെനു തുറക്കുക') : (open ? 'Close navigation' : 'Open navigation'));
         nav.classList.toggle('is-open', open);
       });
       nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
         nav.classList.remove('is-open');
         menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Open navigation');
+        menuToggle.setAttribute('aria-label', language === 'ml' ? 'മെനു തുറക്കുക' : 'Open navigation');
       }));
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+          menuToggle.click();
+          menuToggle.focus();
+        }
+      });
 
       function updateCountdown() {
         let remaining = targetTime - Date.now();
@@ -680,6 +730,7 @@
         byId('minutes').textContent = String(minutes).padStart(2, '0');
         byId('seconds').textContent = String(seconds).padStart(2, '0');
       }
+      try { setLanguage(localStorage.getItem('invitation-language') || 'en'); } catch (_) { setLanguage('en'); }
       updateCountdown();
       window.setInterval(updateCountdown, 1000);
 
@@ -713,3 +764,4 @@
     })();
   </script></body>
 </html>
+
