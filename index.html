@@ -576,11 +576,13 @@
           <button type="button" class="attendance-choice" disabled data-attendance="no" aria-pressed="false" data-i18n="attendNo">Unable to attend</button>
         </div>
         <input type="hidden" name="attendance" id="attendance" value="yes">
-        <div class="form-field"><label for="guest-name" data-i18n="nameLabel">Your name</label><input id="guest-name" disabled name="name" autocomplete="name" required data-i18n-placeholder="namePlaceholder" placeholder="Your name"></div>
-        <div class="form-field"><label for="guest-count" data-i18n="guestLabel">Number of guests</label><select id="guest-count" disabled name="guests"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
-        <div class="form-field form-field--message"><label for="guest-message" data-i18n="messageLabel">Message (optional)</label><textarea id="guest-message" disabled name="message" data-i18n-placeholder="messagePlaceholder" placeholder="Leave a message"></textarea></div>
+        <div class="form-field"><label for="guest-name" data-i18n="nameLabel">Your name</label><input id="guest-name" disabled name="name" autocomplete="name" maxlength="120" required data-i18n-placeholder="namePlaceholder" placeholder="Your name"></div>
+        <div class="form-field"><label for="guest-count" data-i18n="guestLabel">Number of guests (including you)</label><select id="guest-count" disabled name="guests"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+        <div class="form-field form-field--message"><label for="guest-message" data-i18n="messageLabel">Message (optional)</label><textarea id="guest-message" disabled name="message" maxlength="1000" data-i18n-placeholder="messagePlaceholder" placeholder="Leave a message"></textarea></div>
         <button class="send-rsvp" type="submit" disabled data-i18n="sendRsvp">Send RSVP ↗</button>
-        <p class="form-status" id="form-status" role="status" aria-live="polite" data-i18n="formNotice">RSVP is not available yet. No responses are being collected.</p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite" >RSVP is not available yet. No responses are being collected.</p>
+        <p class="form-status" data-i18n="privacyNotice">Your response is stored privately for the event organizers.</p>
+        <input name="website" id="rsvp-website" type="text" tabindex="-1" autocomplete="off" hidden aria-hidden="true">
       </form>
     </div>
   </section>
@@ -588,6 +590,7 @@
 
 <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
 
+<script src="rsvp-config.js"></script>
 <script>
     (() => {
       'use strict';
@@ -601,7 +604,7 @@
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
           detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTitle:'Engagement ceremony', eventTime:'12:00 PM', detailsNote:'Same people. Bigger celebrations.', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
           venueLabel:'The venue', venueHeadline:"Let's meet here", venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', venueDescription:'A lovely place to gather, celebrate, and share this special day with our favourite people.', qrCaption:'Scan for the venue location', directions:'View location ↗',
-          rsvpLabel:'Kindly', rsvpHeadline:'RSVP', rsvpCopy:"Please let us know if you'll be joining us for our special day.", attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP ↗', formNotice:'RSVP is not available yet. No responses are being collected.', formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
+          rsvpLabel:'Kindly', rsvpHeadline:'RSVP', rsvpCopy:"Please let us know if you'll be joining us for our special day.", attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests (including you)', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP ↗', formNotice:'RSVP is not available yet. No responses are being collected.', formReady:'Please send your response below.', formSending:'Saving your response…', formSuccess:'Thank you! Your RSVP has been saved.', formError:'We could not confirm your RSVP. Your details are still here; please try again.', privacyNotice:'Your response is stored privately for the event organizers.',
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
         },
         ml: {
@@ -610,7 +613,7 @@
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
           detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTitle:'വിവാഹനിശ്ചയം', eventTime:'ഉച്ചയ്ക്ക് 12:00', detailsNote:'ഒരേ ആളുകൾ. വലിയ ആഘോഷങ്ങൾ.', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
           venueLabel:'വേദി', venueHeadline:'ഇവിടെ കണ്ടുമുട്ടാം', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', venueDescription:'പ്രിയപ്പെട്ടവരോടൊപ്പം ഒത്തുചേർന്ന് ഈ പ്രത്യേക ദിവസം ആഘോഷിക്കാനുള്ള മനോഹരമായ ഇടം.', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
-          rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', rsvpCopy:'ഞങ്ങളുടെ പ്രത്യേക ദിവസത്തിൽ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കൂ.', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ ↗', formNotice:'RSVP സൗകര്യം ഇതുവരെ ലഭ്യമല്ല. മറുപടികൾ ശേഖരിക്കുന്നില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
+          rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', rsvpCopy:'ഞങ്ങളുടെ പ്രത്യേക ദിവസത്തിൽ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കൂ.', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'നിങ്ങൾ ഉൾപ്പെടെ അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ ↗', formNotice:'RSVP സൗകര്യം ഇതുവരെ ലഭ്യമല്ല. മറുപടികൾ ശേഖരിക്കുന്നില്ല.', formReady:'നിങ്ങളുടെ മറുപടി താഴെ അയക്കൂ.', formSending:'മറുപടി സേവ് ചെയ്യുന്നു…', formSuccess:'നന്ദി! നിങ്ങളുടെ മറുപടി സേവ് ചെയ്തു.', formError:'മറുപടി സേവ് ചെയ്തെന്ന് സ്ഥിരീകരിക്കാനായില്ല. വിവരങ്ങൾ ഇവിടെ തന്നെയുണ്ട്; വീണ്ടും ശ്രമിക്കൂ.', privacyNotice:'നിങ്ങളുടെ മറുപടി ചടങ്ങിന്റെ സംഘാടകർക്കായി സ്വകാര്യമായി സൂക്ഷിക്കുന്നു.',
           countdownLabel:'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ', passed:'ഇന്നാണ് ആ ദിവസം!'
         }
       };
@@ -644,6 +647,7 @@
         langMl.setAttribute('aria-pressed', String(next === 'ml'));
         byId('countdown').setAttribute('aria-label', next === 'en' ? 'Countdown to the engagement' : 'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ');
         updateCountdown();
+        renderRsvp();
       }
       byId('back-to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
 
@@ -683,17 +687,59 @@
       updateCountdown();
       window.setInterval(updateCountdown, 1000);
 
+      const form = byId('rsvp-form');
       const attendanceInput = byId('attendance');
+      const endpoint = window.RSVP_ENDPOINT || '';
+      const configured = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint);
+      let rsvpState = configured ? 'formReady' : 'formNotice';
+      let responseId;
+      function renderRsvp() {
+        const busy = rsvpState === 'formSending';
+        form.setAttribute('aria-busy', String(busy));
+        form.querySelectorAll('button,input,select,textarea').forEach(control => {
+          control.disabled = !configured || busy || (control.id === 'guest-count' && attendanceInput.value === 'no');
+        });
+        byId('form-status').textContent = translations[language][rsvpState];
+        form.querySelector('[type="submit"]').textContent = translations[language][busy ? 'formSending' : 'sendRsvp'];
+      }
       document.querySelectorAll('.attendance-choice').forEach(button => button.addEventListener('click', () => {
-        const selected = button.dataset.attendance;
-        attendanceInput.value = selected;
+        attendanceInput.value = button.dataset.attendance;
         document.querySelectorAll('.attendance-choice').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
-        byId('guest-count').disabled = selected === 'no';
+        rsvpState = configured ? 'formReady' : 'formNotice';
+        renderRsvp();
       }));
-      byId('rsvp-form').addEventListener('submit', event => {
-        event.preventDefault();
-        byId('form-status').textContent = translations[language].formPreview;
+      form.addEventListener('input', () => {
+        if (rsvpState === 'formSuccess') { rsvpState = 'formReady'; renderRsvp(); }
       });
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (!configured || rsvpState === 'formSending' || !form.reportValidity()) return;
+        const name = byId('guest-name');
+        if (!name.value.trim()) { name.focus(); return; }
+        responseId = responseId || crypto.randomUUID();
+        const payload = new URLSearchParams({
+          responseId, name: name.value.trim(), attendance: attendanceInput.value,
+          guests: attendanceInput.value === 'no' ? '0' : byId('guest-count').value,
+          message: byId('guest-message').value.trim(), language,
+          website: byId('rsvp-website').value
+        });
+        rsvpState = 'formSending'; renderRsvp();
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 25000);
+        try {
+          // A readable, matching acknowledgement is mandatory. Never use no-cors.
+          const response = await fetch(endpoint, {method:'POST', body:payload, signal:controller.signal, credentials:'omit', redirect:'follow'});
+          if (!response.ok) throw new Error('Submission failed');
+          const result = await response.json();
+          if (result.ok !== true || result.responseId !== responseId) throw new Error('Unconfirmed response');
+          rsvpState = 'formSuccess';
+        } catch (error) {
+          rsvpState = 'formError';
+        } finally {
+          clearTimeout(timeout); renderRsvp();
+        }
+      });
+      renderRsvp();
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const revealItems = document.querySelectorAll('.reveal');
