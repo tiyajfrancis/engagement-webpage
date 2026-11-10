@@ -202,6 +202,7 @@
   .form-field textarea{min-height:80px;resize:vertical}
   .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(253,251,247,.58);opacity:1}
   .send-rsvp{display:block;width:min(100%,290px);min-height:48px;margin:8px auto 0;padding:13px 20px;border:1px solid var(--ochre);border-radius:28px;background:var(--ochre);color:var(--charcoal);font-size:11px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
+  .send-rsvp:disabled{cursor:not-allowed;opacity:.65}
   .send-rsvp:hover{background:var(--beige);border-color:var(--beige);color:var(--charcoal)}
   .form-status{min-height:24px;margin:13px 0 0;text-align:center;color:#E0BD91;font-size:12px;line-height:1.6}
   .baby-breath-art--rsvp-top{top:-10px;right:-20px;width:clamp(100px,10.5vw,150px);transform:rotate(180deg);opacity:.86}
@@ -569,17 +570,17 @@
         <p class="body-copy" data-i18n="rsvpCopy">Please let us know if you'll be joining us for our special day.</p>
         <div class="divider" aria-hidden="true"><span>♡</span></div>
       </div>
-      <form class="rsvp-form reveal" id="rsvp-form">
+      <form class="rsvp-form reveal" id="rsvp-form" aria-describedby="form-status">
         <div class="attendance-options" role="group" aria-label="Attendance response">
-          <button type="button" class="attendance-choice" data-attendance="yes" aria-pressed="true" data-i18n="attendYes">I'll be there</button>
-          <button type="button" class="attendance-choice" data-attendance="no" aria-pressed="false" data-i18n="attendNo">Unable to attend</button>
+          <button type="button" class="attendance-choice" disabled data-attendance="yes" aria-pressed="true" data-i18n="attendYes">I'll be there</button>
+          <button type="button" class="attendance-choice" disabled data-attendance="no" aria-pressed="false" data-i18n="attendNo">Unable to attend</button>
         </div>
         <input type="hidden" name="attendance" id="attendance" value="yes">
-        <div class="form-field"><label for="guest-name" data-i18n="nameLabel">Your name</label><input id="guest-name" name="name" autocomplete="name" required data-i18n-placeholder="namePlaceholder" placeholder="Your name"></div>
-        <div class="form-field"><label for="guest-count" data-i18n="guestLabel">Number of guests</label><select id="guest-count" name="guests"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
-        <div class="form-field form-field--message"><label for="guest-message" data-i18n="messageLabel">Message (optional)</label><textarea id="guest-message" name="message" data-i18n-placeholder="messagePlaceholder" placeholder="Leave a message"></textarea></div>
-        <button class="send-rsvp" type="submit" data-i18n="sendRsvp">Send RSVP ↗</button>
-        <p class="form-status" id="form-status" role="status" aria-live="polite" data-i18n="formNotice">RSVP responses are not connected in this draft.</p>
+        <div class="form-field"><label for="guest-name" data-i18n="nameLabel">Your name</label><input id="guest-name" disabled name="name" autocomplete="name" required data-i18n-placeholder="namePlaceholder" placeholder="Your name"></div>
+        <div class="form-field"><label for="guest-count" data-i18n="guestLabel">Number of guests</label><select id="guest-count" disabled name="guests"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+        <div class="form-field form-field--message"><label for="guest-message" data-i18n="messageLabel">Message (optional)</label><textarea id="guest-message" disabled name="message" data-i18n-placeholder="messagePlaceholder" placeholder="Leave a message"></textarea></div>
+        <button class="send-rsvp" type="submit" disabled data-i18n="sendRsvp">Send RSVP ↗</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite" data-i18n="formNotice">RSVP is not available yet. No responses are being collected.</p>
       </form>
     </div>
   </section>
@@ -597,19 +598,19 @@
         en: {
           skip:'Skip to invitation', navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP',
           join:'Join us', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
-          storyLabel:'Our story', storyHeadline:'Two main characters. One shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
+          storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
           detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTitle:'Engagement ceremony', eventTime:'12:00 PM', detailsNote:'Same people. Bigger celebrations.', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
           venueLabel:'The venue', venueHeadline:"Let's meet here", venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', venueDescription:'A lovely place to gather, celebrate, and share this special day with our favourite people.', qrCaption:'Scan for the venue location', directions:'View location ↗',
-          rsvpLabel:'Kindly', rsvpHeadline:'RSVP', rsvpCopy:"Please let us know if you'll be joining us for our special day.", attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP ↗', formNotice:'RSVP responses are not connected in this draft.', formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
+          rsvpLabel:'Kindly', rsvpHeadline:'RSVP', rsvpCopy:"Please let us know if you'll be joining us for our special day.", attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP ↗', formNotice:'RSVP is not available yet. No responses are being collected.', formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
         },
         ml: {
           skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി',
           join:'സ്നേഹത്തോടെ ക്ഷണിക്കുന്നു', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
-          storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
+          storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
           detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTitle:'വിവാഹനിശ്ചയം', eventTime:'ഉച്ചയ്ക്ക് 12:00', detailsNote:'ഒരേ ആളുകൾ. വലിയ ആഘോഷങ്ങൾ.', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
           venueLabel:'വേദി', venueHeadline:'ഇവിടെ കണ്ടുമുട്ടാം', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', venueDescription:'പ്രിയപ്പെട്ടവരോടൊപ്പം ഒത്തുചേർന്ന് ഈ പ്രത്യേക ദിവസം ആഘോഷിക്കാനുള്ള മനോഹരമായ ഇടം.', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
-          rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', rsvpCopy:'ഞങ്ങളുടെ പ്രത്യേക ദിവസത്തിൽ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കൂ.', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ ↗', formNotice:'ഈ കരടിൽ RSVP മറുപടികൾ ശേഖരിക്കാൻ ബന്ധിപ്പിച്ചിട്ടില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
+          rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', rsvpCopy:'ഞങ്ങളുടെ പ്രത്യേക ദിവസത്തിൽ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കൂ.', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ ↗', formNotice:'RSVP സൗകര്യം ഇതുവരെ ലഭ്യമല്ല. മറുപടികൾ ശേഖരിക്കുന്നില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
           countdownLabel:'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ', passed:'ഇന്നാണ് ആ ദിവസം!'
         }
       };
@@ -625,7 +626,15 @@
         document.documentElement.lang = next;
         document.querySelectorAll('[data-i18n]').forEach(node => {
           const value = translations[next][node.dataset.i18n];
-          if (value !== undefined) node.textContent = value;
+          if (value !== undefined) {
+            // Keep intentional heading breaks without inserting translated HTML.
+            const lines = value.split('\n');
+            node.replaceChildren();
+            lines.forEach((line, index) => {
+              if (index) node.appendChild(document.createElement('br'));
+              node.appendChild(document.createTextNode(line));
+            });
+          }
         });
         document.querySelectorAll('[data-i18n-placeholder]').forEach(node => {
           const value = translations[next][node.dataset.i18nPlaceholder];
