@@ -159,7 +159,7 @@
   .count-label{display:block;margin-top:7px;color:#634B3B;font:11px/1.5 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 
   /* 04 — Terracotta venue page: story-copy and actual hotel photograph share the desktop canvas. */
-  .venue-section{--next-paper:var(--charcoal);--deckle-mask:url('assets/deckle-to-charcoal.svg');background:linear-gradient(135deg,#A75D43 0%,#9A5138 62%,#A75D43 100%);color:var(--ivory)}
+  .venue-section{--next-paper:var(--charcoal);--deckle-mask:url('assets/deckle-to-charcoal.svg');background:var(--terracotta);color:var(--ivory)}
   .venue-section .section-inner{min-height:760px;display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:clamp(42px,6vw,90px);align-items:center;padding-bottom:96px}
   .venue-copy{min-width:0;max-width:505px}
   .venue-copy .micro{color:#F1D0A7;margin-bottom:13px}
@@ -578,6 +578,14 @@
   @media(prefers-reduced-motion:reduce){
     html.js .scroll-text{opacity:1;transform:none;transition:none}
   }
+
+  /* Match the terracotta paper edge to the venue background (no colored seam). */
+  .details-section.deckled-transition::after{
+    background-color:var(--terracotta);
+    background-image:none;
+    background-blend-mode:normal;
+  }
+  .venue-section::before{background-image:none}
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
