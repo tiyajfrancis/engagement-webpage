@@ -568,6 +568,16 @@
   @media(max-width:360px){
     .header-right .languages{gap:2px}
   }
+
+  /* Text becomes visible once, when scrolling it into view; never hide the initial viewport. */
+  html.js .scroll-text{
+    opacity:0;transform:translate3d(0,14px,0);
+    transition:opacity .68s ease-out,transform .68s cubic-bezier(.22,1,.36,1);
+  }
+  html.js .scroll-text.is-visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html.js .scroll-text{opacity:1;transform:none;transition:none}
+  }
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -842,17 +852,48 @@
       });
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const revealItems = document.querySelectorAll('.reveal');
+      const revealItems = Array.from(document.querySelectorAll('.reveal'));
       if ('IntersectionObserver' in window && !reduceMotion) {
+        // Headings and paragraphs fade individually; do not fade their wrapping
+        // panels a second time. Photography and other existing reveals remain.
+        const textContainers = '.hero-heading, .story-copy, .venue-copy, .rsvp-copy, .rsvp-form';
+        const inInitialViewport = node => {
+          const box = node.getBoundingClientRect();
+          return box.bottom > 0 && box.top < window.innerHeight - 12;
+        };
         const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
           });
-        }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
-        revealItems.forEach(item => observer.observe(item));
+        }, { threshold: 0.06, rootMargin: '0px 0px -35px 0px' });
+
+        revealItems.forEach(item => {
+          if (item.matches(textContainers) || inInitialViewport(item)) {
+            item.classList.add('is-visible');
+          } else {
+            observer.observe(item);
+          }
+        });
+
+        const textSelector = [
+          'main h1', 'main h2', 'main h3', 'main p', 'main figcaption',
+          'main .save-date', 'main .date-strip', 'main .names', 'main .event-time',
+          'main .countdown', 'main .venue-name', 'main .venue-city',
+          'main .attendance-options', 'main .form-field label',
+          'main .send-rsvp', 'main .qr-link', 'main .button-link'
+        ].join(', ');
+        document.querySelectorAll(textSelector).forEach(node => {
+          // A parent reveal already fades this text, unless it is one of the
+          // editorial panels deliberately revealed text-by-text.
+          if (node.classList.contains('reveal')) return;
+          const parentReveal = node.parentElement && node.parentElement.closest('.reveal');
+          if (parentReveal && !parentReveal.matches(textContainers)) return;
+          if (inInitialViewport(node)) return;
+          node.classList.add('scroll-text');
+          observer.observe(node);
+        });
       } else {
         revealItems.forEach(item => item.classList.add('is-visible'));
       }
