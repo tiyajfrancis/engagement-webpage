@@ -548,11 +548,30 @@
     .section .baby-breath-art.baby-breath-art--details-top{width:75px}
     .section .baby-breath-art.baby-breath-art--rsvp-top{width:82px}
   }
+
+  /* Logo-free navigation: page links on desktop, centered languages + menu on phones. */
+  .header{justify-content:flex-end}
+  .header-right{width:100%;justify-content:space-between}
+  .header-right .nav{margin-right:auto}
+  .header-right .languages{margin-left:auto}
+  @media(max-width:760px){
+    .header{padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
+    .header-right{
+      width:100%;display:grid;
+      grid-template-columns:minmax(44px,1fr) auto minmax(44px,1fr);
+      align-items:center;gap:0;
+    }
+    .header-right .languages{grid-column:2;justify-self:center;margin:0;gap:5px}
+    .header-right .menu-toggle{grid-column:3;justify-self:end;margin:0}
+    .header-right .nav{margin:0}
+  }
+  @media(max-width:360px){
+    .header-right .languages{gap:2px}
+  }
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
   <header class="header">
-    <a class="brand" href="#home" aria-label="Arathy and Pranav — home">A<span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>P</a>
     <div class="header-right">
       <nav class="nav" id="main-nav" aria-label="Main navigation">
         <a href="#home" data-i18n="navHome">Invitation</a>
