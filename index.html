@@ -458,11 +458,49 @@
   html[lang="ml"] .venue-copy .display-title{font-size:clamp(30px,4vw,54px);overflow-wrap:anywhere}
   html[lang="ml"] .section :is(h1,h2){overflow-wrap:anywhere;line-height:1.42}
   html[lang="ml"] .hero .main-title,html[lang="ml"] .story-copy .display-title{font-size:clamp(27px,3.5vw,50px)}
+
+  /* Guest-annotated refinements — preserve the existing stationery palette. */
+  .brand{display:inline-flex;align-items:center;gap:7px;line-height:1}
+  .brand .star{display:inline-flex;align-items:center;justify-content:center;color:#A66D46}
+  .brand .star svg{display:block;width:.82em;height:.82em}
+
+  /* Make the complete calendar date readable at a glance, not only the numeral. */
+  .save-date{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(9px,2.5vw,24px);padding:clamp(23px,3.8vw,33px) 0}
+  .save-date-side{min-width:0;font-size:clamp(16px,2.2vw,21px);letter-spacing:.08em}
+  .save-date-day{font-size:clamp(76px,8.7vw,106px);font-weight:500;line-height:.9}
+  .save-date-month{margin-top:13px;font-size:clamp(16px,1.85vw,20px);letter-spacing:.08em}
+
+  /* Keep the ceremony time the focal point without the old label. */
+  .event-info{margin-top:26px}
+  .event-item .event-time{display:inline-block;margin-top:5px;padding:8px 20px;border-radius:999px;background:rgba(212,163,115,.16);color:#794628;font:700 clamp(23px,3vw,30px)/1.2 system-ui,sans-serif;letter-spacing:.025em}
+  .details-note{margin-top:17px}
+
+  /* The RSVP is still a disabled preview: emphasize only its typography and contrast. */
+  .rsvp-form .attendance-options button{min-height:58px;padding:12px 10px;font:600 clamp(17px,1.65vw,20px)/1.25 Georgia,serif;letter-spacing:.005em;white-space:normal;border:1.5px solid rgba(224,182,132,.9);color:#FFF1DC}
+  .rsvp-form .attendance-options button[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:var(--charcoal);font-weight:700}
+  .rsvp-form .attendance-options button:disabled{opacity:1;cursor:default}
+
+  @media (max-width:760px){
+    .save-date{gap:8px;padding:23px 0}
+    .save-date-side{font-size:clamp(14px,4.1vw,18px);letter-spacing:.045em}
+    .save-date-day{font-size:clamp(70px,18vw,90px)}
+    .save-date-month{font-size:clamp(14px,3.6vw,18px);margin-top:12px;letter-spacing:.045em}
+    .event-item .event-time{font-size:clamp(22px,6vw,27px);padding:8px 18px}
+    .rsvp-form .attendance-options button{min-height:60px;font-size:clamp(16px,4.3vw,18px)}
+  }
+  @media (max-width:360px){
+    .save-date-side{font-size:13px;letter-spacing:.02em}
+    .save-date-day{font-size:66px}
+    .save-date-month{font-size:13px}
+    .rsvp-form .attendance-options button{font-size:15px;padding-inline:5px}
+  }
+  html[lang="ml"] .save-date-side{font-size:clamp(12px,3.5vw,16px);letter-spacing:normal;line-height:1.4}
+  html[lang="ml"] .rsvp-form .attendance-options button{font-family:"Noto Sans Malayalam",sans-serif;font-size:clamp(13px,3.5vw,16px);font-weight:700}
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
   <header class="header">
-    <a class="brand" href="#home" aria-label="Arathy and Pranav — home">A <span class="star">✳</span> P</a>
+    <a class="brand" href="#home" aria-label="Arathy and Pranav — home">A<span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>P</a>
     <div class="header-right">
       <nav class="nav" id="main-nav" aria-label="Main navigation">
         <a href="#home" data-i18n="navHome">Invitation</a>
@@ -550,7 +588,7 @@
       <div class="divider reveal" aria-hidden="true"><span>♡</span></div>
       <div class="save-date reveal"><span class="save-date-side" data-i18n="sunday">Sunday</span><span class="save-date-day">24<span class="save-date-month" data-i18n="january">January</span></span><span class="save-date-side">2027</span></div>
       <div class="event-info reveal">
-        <div class="event-item"><span class="event-icon" aria-hidden="true">❀</span><strong data-i18n="eventTitle">Engagement ceremony</strong><span data-i18n="eventTime">12:00 PM</span></div>
+        <div class="event-item"><span class="event-icon" aria-hidden="true">❀</span><time class="event-time" datetime="2027-01-24T12:00:00+05:30" data-i18n="eventTime">12:00 PM</time></div>
       </div>
       <p class="details-note script reveal" data-i18n="detailsNote">Same people. Bigger celebrations.</p>
       <div class="countdown reveal" id="countdown" aria-label="Countdown to the engagement" aria-live="off">
@@ -625,7 +663,7 @@
           occasion:'Engagement ceremony', skip:'Skip to invitation', navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP',
           join:'Join us', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
-          detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTitle:'Engagement ceremony', eventTime:'12:00 PM', detailsNote:'Same people. Bigger celebrations.', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
+          detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTime:'12:00 PM', detailsNote:'Same people. Bigger celebrations.', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
           venueLabel:'The venue', venueHeadline:"Let's meet here", venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', venueDescription:'A lovely place to gather, celebrate, and share this special day with our favourite people.', qrCaption:'Scan for the venue location', directions:'View location ↗',
           rsvpLabel:'Kindly', rsvpHeadline:'RSVP', rsvpCopy:"Please let us know if you'll be joining us for our special day.", attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP ↗', formNotice:'RSVP is not available yet. No responses are being collected.', formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
@@ -634,7 +672,7 @@
           occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി',
           join:'സ്നേഹത്തോടെ ക്ഷണിക്കുന്നു', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
-          detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTitle:'വിവാഹനിശ്ചയം', eventTime:'ഉച്ചയ്ക്ക് 12:00', detailsNote:'ഒരേ ആളുകൾ. വലിയ ആഘോഷങ്ങൾ.', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
+          detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTime:'ഉച്ചയ്ക്ക് 12:00', detailsNote:'ഒരേ ആളുകൾ. വലിയ ആഘോഷങ്ങൾ.', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
           venueLabel:'വേദി', venueHeadline:'ഇവിടെ കണ്ടുമുട്ടാം', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', venueDescription:'പ്രിയപ്പെട്ടവരോടൊപ്പം ഒത്തുചേർന്ന് ഈ പ്രത്യേക ദിവസം ആഘോഷിക്കാനുള്ള മനോഹരമായ ഇടം.', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
           rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', rsvpCopy:'ഞങ്ങളുടെ പ്രത്യേക ദിവസത്തിൽ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കൂ.', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ ↗', formNotice:'RSVP സൗകര്യം ഇതുവരെ ലഭ്യമല്ല. മറുപടികൾ ശേഖരിക്കുന്നില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
           countdownLabel:'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ', passed:'ഇന്നാണ് ആ ദിവസം!'
