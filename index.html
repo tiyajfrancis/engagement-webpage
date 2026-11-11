@@ -496,6 +496,58 @@
   }
   html[lang="ml"] .save-date-side{font-size:clamp(12px,3.5vw,16px);letter-spacing:normal;line-height:1.4}
   html[lang="ml"] .rsvp-form .attendance-options button{font-family:"Noto Sans Malayalam",sans-serif;font-size:clamp(13px,3.5vw,16px);font-weight:700}
+
+  /* Approved floral mockup: exactly one corner sprig in the first four sections,
+     and two diagonally balanced sprigs in RSVP. No other flower instances. */
+  .section .baby-breath-art{
+    inset:auto;
+    display:block;
+    width:clamp(95px,11vw,150px);
+    max-width:none;
+    height:auto;
+    z-index:1;
+    object-fit:contain;
+    pointer-events:none;
+    transform-origin:center;
+    opacity:.5;
+  }
+  .section .baby-breath-art.baby-breath-art--hero{
+    top:clamp(8px,2.6vw,28px);right:clamp(8px,2vw,28px);
+    width:clamp(100px,12vw,170px);transform:rotate(180deg);opacity:.53;
+  }
+  .section .baby-breath-art.baby-breath-art--story-bottom{
+    bottom:clamp(25px,5vw,75px);right:clamp(12px,3vw,48px);left:auto;top:auto;
+    width:clamp(110px,12vw,160px);transform:rotate(-14deg);opacity:.55;
+  }
+  .section .baby-breath-art.baby-breath-art--details-top{
+    top:clamp(10px,3vw,40px);right:clamp(10px,3vw,42px);left:auto;bottom:auto;
+    width:clamp(98px,11vw,155px);transform:rotate(180deg);opacity:.43;
+  }
+  .section .baby-breath-art.baby-breath-art--venue-bottom{
+    bottom:clamp(24px,5vw,70px);right:clamp(10px,3vw,44px);left:auto;top:auto;
+    width:clamp(100px,11vw,165px);transform:rotate(-12deg);opacity:.48;
+  }
+  .section .baby-breath-art.baby-breath-art--rsvp-top{
+    top:clamp(18px,3vw,48px);right:clamp(12px,3vw,40px);left:auto;bottom:auto;
+    width:clamp(100px,11vw,165px);transform:rotate(180deg);opacity:.74;
+  }
+  .section .baby-breath-art.baby-breath-art--rsvp-bottom{
+    bottom:clamp(35px,5vw,85px);left:clamp(12px,3vw,40px);top:auto;right:auto;
+    width:clamp(110px,12vw,170px);transform:rotate(-10deg);opacity:.74;
+  }
+  @media(max-width:760px){
+    .section .baby-breath-art{width:102px}
+    .section .baby-breath-art.baby-breath-art--hero{top:12px;right:10px;width:105px;opacity:.52}
+    .section .baby-breath-art.baby-breath-art--story-bottom{bottom:44px;right:12px;width:110px;opacity:.58}
+    .section .baby-breath-art.baby-breath-art--details-top{top:14px;right:10px;width:90px;opacity:.45}
+    .section .baby-breath-art.baby-breath-art--venue-bottom{bottom:36px;right:12px;width:110px;opacity:.53}
+    .section .baby-breath-art.baby-breath-art--rsvp-top{top:22px;right:12px;width:112px;opacity:.77}
+    .section .baby-breath-art.baby-breath-art--rsvp-bottom{bottom:58px;left:12px;width:118px;opacity:.77}
+  }
+  @media(max-width:360px){
+    .section .baby-breath-art.baby-breath-art--details-top{width:75px}
+    .section .baby-breath-art.baby-breath-art--rsvp-top{width:91px}
+  }
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -555,7 +607,7 @@
   </section>
 
   <section class="section story-section deckled-transition" id="story" aria-labelledby="story-title">
-    <img class="baby-breath-art baby-breath-art--story-top" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
+
     <img class="baby-breath-art baby-breath-art--story-bottom" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
 
 
@@ -578,7 +630,7 @@
 
   <section class="section details-section deckled-transition" id="details" aria-labelledby="details-title">
     <img class="baby-breath-art baby-breath-art--details-top" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
-    <img class="baby-breath-art baby-breath-art--details-bottom" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
+
 
 
     <div class="details-landscape" aria-hidden="true"></div>
@@ -601,7 +653,7 @@
   </section>
 
   <section class="section venue-section deckled-transition" id="venue" aria-labelledby="venue-title">
-    <img class="baby-breath-art baby-breath-art--venue-top" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
+
     <img class="baby-breath-art baby-breath-art--venue-bottom" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
 
 
