@@ -646,6 +646,58 @@
   }
 
   /* Venue keeps the same paper-grain overlay as the surrounding torn edges. */
+
+  /* Hero polish: centered optical balance, lighter tape and a context-aware arrow. */
+  .hero .rings-image{transform:translate(3px,1px)}
+  .hero .photo-frame::before{background:rgba(212,163,115,.48)}
+  .hero .photo-frame .paper-tape{background:rgba(212,163,115,.38);box-shadow:0 1px 2px rgba(44,37,35,.05)}
+  .back-to-top{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease,background .2s ease}
+  .back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+  .back-to-top.is-visible:hover{transform:translateY(-2px)}
+
+  /* Stem-root anchored to the true upper-right corner; blossoms grow inward. */
+  .section .baby-breath-art.baby-breath-art--details-top,
+  .section .baby-breath-art.baby-breath-art--rsvp-top{
+    top:0;right:0;bottom:auto;left:auto;width:clamp(116px,12vw,156px);
+    transform:translate(10%,-10%) rotate(215deg);transform-origin:center center
+  }
+  .section .baby-breath-art.baby-breath-art--details-top{opacity:.62}
+  .section .baby-breath-art.baby-breath-art--rsvp-top{opacity:.88}
+  @media(max-width:760px){
+    .section .baby-breath-art.baby-breath-art--details-top,
+    .section .baby-breath-art.baby-breath-art--rsvp-top{width:114px}
+  }
+  @media(max-width:375px){
+    .section .baby-breath-art.baby-breath-art--details-top,
+    .section .baby-breath-art.baby-breath-art--rsvp-top{width:101px}
+    html[lang="ml"] .names{width:100%;gap:3px}
+    html[lang="ml"] .names .name{font-size:clamp(20px,5.6vw,25px);white-space:nowrap}
+    html[lang="ml"] .rings-image{width:clamp(34px,9vw,42px)}
+  }
+
+  /* One continuous paper container per section. The NEXT section itself has a
+     deckled top and shared grain, rather than a differently tinted edge overlay
+     that stops abruptly at the original section boundary. */
+  @supports (mask-composite:add){
+    .deckled-transition::after{display:none}
+    .section:not(.hero){
+      --tear-height:clamp(80px,9vw,132px);
+      margin-top:calc(-1 * var(--tear-height));padding-top:var(--tear-height);
+      -webkit-mask-image:var(--top-paper-mask),linear-gradient(#fff,#fff);
+      mask-image:var(--top-paper-mask),linear-gradient(#fff,#fff);
+      -webkit-mask-repeat:no-repeat,no-repeat;mask-repeat:no-repeat,no-repeat;
+      -webkit-mask-position:center top,center bottom;mask-position:center top,center bottom;
+      -webkit-mask-size:100% var(--tear-height),100% calc(100% - var(--tear-height) + 1px);
+      mask-size:100% var(--tear-height),100% calc(100% - var(--tear-height) + 1px);
+      -webkit-mask-composite:source-over;mask-composite:add
+    }
+    .story-section{--top-paper-mask:url('assets/deckle-to-ivory.svg')}
+    .details-section{--top-paper-mask:url('assets/deckle-to-beige.svg')}
+    .venue-section{--top-paper-mask:url('assets/deckle-to-terracotta.svg')}
+    .rsvp-section{--top-paper-mask:url('assets/deckle-to-charcoal.svg')}
+    .section .baby-breath-art.baby-breath-art--details-top,
+    .section .baby-breath-art.baby-breath-art--rsvp-top{top:calc(var(--tear-height) * .62)}
+  }
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -875,6 +927,18 @@
       }
       byId('back-to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
 
+
+      /* Do not obscure the couple on the initial page. */
+      const backToTop = byId('back-to-top');
+      function syncBackToTop() {
+        const show = byId('home').getBoundingClientRect().bottom <= 48;
+        backToTop.classList.toggle('is-visible', show);
+        backToTop.tabIndex = show ? 0 : -1;
+        if (!show && document.activeElement === backToTop) backToTop.blur();
+      }
+      window.addEventListener('scroll', syncBackToTop, {passive:true});
+      window.addEventListener('resize', syncBackToTop);
+      syncBackToTop();
       langEn.addEventListener('click', () => setLanguage('en'));
       langMl.addEventListener('click', () => setLanguage('ml'));
 
