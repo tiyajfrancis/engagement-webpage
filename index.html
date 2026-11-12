@@ -53,7 +53,7 @@
   .nav a{position:relative;padding:9px 0;text-decoration:none;font-size:13px;letter-spacing:.015em;color:var(--ink);white-space:nowrap}
   .nav a:hover::after,.nav a:focus-visible::after{content:'';position:absolute;right:0;bottom:2px;left:0;height:1px;background:var(--terracotta)}
   */
-  /* Refined stationery-inspired language switcher: less visual weight, 44px touch targets. */
+  /* Compact language switch with a single smoothly sliding selected-state pill. */
   .hero-language-switcher{
     position:absolute;
     z-index:8;
@@ -61,7 +61,7 @@
     right:max(20px,calc((100vw - 1320px)/2 + 28px));
     display:inline-flex;
     align-items:center;
-    gap:1px;
+    gap:0;
     max-width:calc(100% - 32px);
     padding:2px;
     border:1px solid rgba(212,163,115,.55);
@@ -69,31 +69,46 @@
     background:#FDF8EF;
     box-shadow:0 2px 10px rgba(44,37,35,.08);
     color:var(--ink);
-    font:500 12.5px/1.4 system-ui,sans-serif;
+    font:500 11px/1.4 system-ui,sans-serif;
     white-space:nowrap;
   }
+  .hero-language-switcher .language-thumb{
+    position:absolute;
+    z-index:0;
+    top:2px;
+    bottom:2px;
+    left:var(--thumb-left,3px);
+    width:var(--thumb-width,38px);
+    border-radius:999px;
+    background:#EEDCC6;
+    pointer-events:none;
+    transition:left .38s cubic-bezier(.22,1,.36,1),width .38s cubic-bezier(.22,1,.36,1);
+  }
   .hero-language-switcher button{
+    position:relative;
+    z-index:1;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    min-width:44px;
-    min-height:44px;
-    padding:6px 11px;
+    min-width:38px;
+    min-height:38px;
+    padding:5px 9px;
     border:0;
     border-radius:999px;
     background:transparent;
     color:var(--ink);
     font:inherit;
     cursor:pointer;
-    transition:background-color .2s ease,color .2s ease;
+    transition:color .25s ease;
   }
-  .hero-language-switcher button[aria-pressed="true"]{background:#EEDCC6;color:#3A2B24}
-  .hero-language-switcher button:hover:not([aria-pressed="true"]){background:rgba(212,163,115,.13)}
+  .hero-language-switcher button[aria-pressed="true"]{color:#3A2B24}
   .hero-language-switcher button:focus-visible{outline:2px solid #8C5737;outline-offset:2px}
   .hero-language-switcher #lang-ml{font-family:"Noto Sans Malayalam",sans-serif}
   @media(max-width:760px){
     .hero-language-switcher{top:16px;right:max(16px,env(safe-area-inset-right))}
-    .hero-language-switcher button{padding-inline:10px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-language-switcher .language-thumb{transition:none}
   }
   /* Menu toggle disabled.
   .menu-toggle{display:none;min-width:44px;min-height:44px;color:var(--charcoal);background:transparent;border:0;padding:5px;cursor:pointer;font-size:24px;line-height:1}
@@ -658,10 +673,10 @@
 <main>
   <section class="section hero deckled-transition" id="home" aria-labelledby="main-title">
     <div class="hero-language-switcher" role="group" aria-label="Choose language">
+      <span class="language-thumb" aria-hidden="true"></span>
       <button type="button" id="lang-en" aria-label="English" aria-pressed="true">EN</button>
       <button type="button" id="lang-ml" aria-label="മലയാളം" aria-pressed="false">മലയാളം</button>
     </div>
-    <img class="baby-breath-art baby-breath-art--hero" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
 
 
     <div class="section-inner">
@@ -822,6 +837,14 @@
       let language = 'en';
       const langEn = byId('lang-en');
       const langMl = byId('lang-ml');
+      const languageSwitcher = document.querySelector('.hero-language-switcher');
+      function syncLanguageThumb() {
+        const selected = langEn.getAttribute('aria-pressed') === 'true' ? langEn : langMl;
+        languageSwitcher.style.setProperty('--thumb-left', selected.offsetLeft + 'px');
+        languageSwitcher.style.setProperty('--thumb-width', selected.offsetWidth + 'px');
+      }
+      window.addEventListener('resize', syncLanguageThumb);
+      if (document.fonts) document.fonts.ready.then(syncLanguageThumb);
       /* Disabled navigation DOM references:
       const menuToggle = byId('menu-toggle');
       const nav = byId('main-nav');
@@ -850,6 +873,7 @@
         });
         langEn.setAttribute('aria-pressed', String(next === 'en'));
         langMl.setAttribute('aria-pressed', String(next === 'ml'));
+        syncLanguageThumb();
         byId('countdown').setAttribute('aria-label', next === 'en' ? 'Countdown to the engagement' : 'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ');
         /* Disabled menu accessibility label:
         menuToggle.setAttribute('aria-label', next === 'ml' ? (menuToggle.getAttribute('aria-expanded') === 'true' ? 'മെനു അടയ്ക്കുക' : 'മെനു തുറക്കുക') : (menuToggle.getAttribute('aria-expanded') === 'true' ? 'Close navigation' : 'Open navigation'));
