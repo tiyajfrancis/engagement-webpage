@@ -69,7 +69,7 @@
     background:#FDF8EF;
     box-shadow:0 2px 10px rgba(44,37,35,.08);
     color:var(--ink);
-    font:500 11px/1.4 system-ui,sans-serif;
+    font:500 10px/1.4 system-ui,sans-serif;
     white-space:nowrap;
   }
   .hero-language-switcher .language-thumb{
@@ -78,7 +78,7 @@
     top:2px;
     bottom:2px;
     left:var(--thumb-left,3px);
-    width:var(--thumb-width,38px);
+    width:var(--thumb-width,34px);
     border-radius:999px;
     background:#EEDCC6;
     pointer-events:none;
@@ -90,9 +90,9 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    min-width:38px;
-    min-height:38px;
-    padding:5px 9px;
+    min-width:34px;
+    min-height:34px;
+    padding:4px 7px;
     border:0;
     border-radius:999px;
     background:transparent;
@@ -115,7 +115,7 @@
   */
 
   .section{position:relative;isolation:isolate;scroll-margin-top:10px;overflow:hidden}
-  .section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('assets/paper-grain.png');background-repeat:repeat;opacity:.24;mix-blend-mode:multiply}
+  .section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('assets/paper-grain.png');background-repeat:repeat;background-size:220px 220px;opacity:.24;mix-blend-mode:multiply}
   .section-inner{width:min(var(--content),100%);min-width:0;margin:0 auto;padding:clamp(60px,7vw,104px) clamp(24px,5vw,74px);position:relative;z-index:3}
   .section-inner>*{min-width:0}
   .section p,.section h1,.section h2,.section h3{overflow-wrap:anywhere}
@@ -140,13 +140,10 @@
   .baby-breath-art--venue-bottom{bottom:-10px;left:-24px;width:clamp(128px,14vw,210px);transform:none;opacity:.38}
   .paper-tape{position:absolute;top:-14px;left:40%;width:94px;height:25px;background:rgba(212,163,115,.58);transform:rotate(-5deg);z-index:4;box-shadow:0 1px 2px rgba(44,37,35,.08)}
 
-  /* Deckled paper transitions: a textured next-sheet layer with a natural torn edge. */
+  /* Match each torn edge's paper grain intensity and scale to the next full section.
+     A translucent paper-color wash keeps the texture from ending in a hard horizontal line. */
   .deckled-transition{--next-paper:var(--ivory);--deckle-mask:url('assets/deckle-to-ivory.svg')}
-  .deckled-transition::after{content:'';position:absolute;z-index:2;left:-1%;right:-1%;bottom:-1px;height:clamp(80px,9vw,132px);pointer-events:none;background-color:var(--next-paper);background-image:url('assets/paper-grain.png');background-repeat:repeat;background-size:220px 220px;background-blend-mode:multiply;-webkit-mask-image:var(--deckle-mask);mask-image:var(--deckle-mask);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-mode:alpha;mask-mode:alpha;filter:drop-shadow(0 -2px 2px rgba(44,37,35,.19))}
-
-  /* Deckled paper transitions: a textured next-sheet layer with a natural torn edge. */
-  .deckled-transition{--next-paper:var(--ivory);--deckle-mask:url('assets/deckle-to-ivory.svg')}
-  .deckled-transition::after{content:'';position:absolute;z-index:2;left:-1%;right:-1%;bottom:-1px;height:clamp(80px,9vw,132px);pointer-events:none;background-color:var(--next-paper);background-image:url('assets/paper-grain.png');background-repeat:repeat;background-size:220px 220px;background-blend-mode:multiply;-webkit-mask-image:var(--deckle-mask);mask-image:var(--deckle-mask);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-mode:alpha;mask-mode:alpha;filter:drop-shadow(0 -2px 2px rgba(44,37,35,.19))}
+  .deckled-transition::after{content:'';position:absolute;z-index:2;left:-1%;right:-1%;bottom:-1px;height:clamp(80px,9vw,132px);pointer-events:none;background-color:var(--next-paper);background-image:linear-gradient(color-mix(in srgb,var(--next-paper) 76%,transparent),color-mix(in srgb,var(--next-paper) 76%,transparent)),url('assets/paper-grain.png');background-repeat:repeat;background-size:100% 100%,220px 220px;background-blend-mode:normal,multiply;-webkit-mask-image:var(--deckle-mask);mask-image:var(--deckle-mask);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-mode:alpha;mask-mode:alpha;filter:drop-shadow(0 -2px 2px rgba(44,37,35,.19))}
 
   /* 01 — Sage invitation: editorial spread on desktop, familiar stacked composition on mobile. */
   .hero{--next-paper:var(--ivory);--deckle-mask:url('assets/deckle-to-ivory.svg');min-height:clamp(720px,100svh,900px);background:linear-gradient(126deg,#596B55 0%,var(--sage) 53%,#667A68 100%);color:var(--ivory)}
@@ -168,7 +165,9 @@
   @keyframes frame-two{0%,44%{opacity:0}50%,94%{opacity:1}100%{opacity:0}}
   .story-kicker{position:relative;z-index:5;align-self:flex-end;width:min(330px,84%);margin:-53px 0 0;padding:16px 19px 14px;background:#FDF8EF;color:var(--ink);text-align:center;font:500 11px/1.65 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;clip-path:polygon(1% 4%,16% 0,36% 3%,55% 0,77% 4%,99% 0,100% 94%,78% 100%,52% 97%,24% 100%,0 94%);transform:rotate(-2deg);box-shadow:0 8px 18px rgba(26,28,21,.12)}
   .story-kicker .star{display:block;margin-top:5px;color:var(--ochre);font:normal 16px/1 Georgia,serif;letter-spacing:0}
-  .names{display:flex;align-items:center;justify-content:flex-start;gap:clamp(8px,1.1vw,18px);margin:14px 0 0;text-align:left}
+  .names{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;width:min(520px,100%);gap:clamp(5px,.9vw,12px);margin:14px 0 0}
+  .names .name:first-child{justify-self:end;text-align:right}
+  .names .name:last-child{justify-self:start;text-align:left}
   .name{color:#EAC18E;font-size:clamp(35px,4.4vw,62px);font-style:italic;line-height:1;font-weight:400;white-space:nowrap}
   .rings{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center}
   .rings-image{display:block;width:clamp(56px,6vw,78px);height:auto;object-fit:contain}
@@ -646,12 +645,7 @@
     html.js .scroll-text{opacity:1;transform:none;transition:none}
   }
 
-  /* Match the terracotta paper edge to the venue background (no colored seam). */
-  .details-section.deckled-transition::after{
-    background-color:var(--terracotta);
-    background-image:none;
-    background-blend-mode:normal;
-  }
+  /* Venue keeps the same paper-grain overlay as the surrounding torn edges. */
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -712,7 +706,6 @@
 
   <section class="section story-section deckled-transition" id="story" aria-labelledby="story-title">
 
-    <img class="baby-breath-art baby-breath-art--story-bottom" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
 
 
     <div class="section-inner">
@@ -758,7 +751,6 @@
 
   <section class="section venue-section deckled-transition" id="venue" aria-labelledby="venue-title">
 
-    <img class="baby-breath-art baby-breath-art--venue-bottom" src="assets/babys-breath.png" alt="" aria-hidden="true" loading="lazy">
 
 
     <div class="section-inner">
