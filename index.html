@@ -53,7 +53,7 @@
   .nav a{position:relative;padding:9px 0;text-decoration:none;font-size:13px;letter-spacing:.015em;color:var(--ink);white-space:nowrap}
   .nav a:hover::after,.nav a:focus-visible::after{content:'';position:absolute;right:0;bottom:2px;left:0;height:1px;background:var(--terracotta)}
   */
-  /* A compact, stationery-inspired language switcher lives inside the hero only. */
+  /* Refined stationery-inspired language switcher: less visual weight, 44px touch targets. */
   .hero-language-switcher{
     position:absolute;
     z-index:8;
@@ -61,23 +61,24 @@
     right:max(20px,calc((100vw - 1320px)/2 + 28px));
     display:inline-flex;
     align-items:center;
-    gap:3px;
+    gap:1px;
     max-width:calc(100% - 32px);
-    padding:4px;
-    border:1px solid rgba(212,163,115,.85);
+    padding:2px;
+    border:1px solid rgba(212,163,115,.55);
     border-radius:999px;
     background:#FDF8EF;
-    box-shadow:0 4px 16px rgba(44,37,35,.12);
+    box-shadow:0 2px 10px rgba(44,37,35,.08);
     color:var(--ink);
-    font:500 13px/1.4 system-ui,sans-serif;
+    font:500 12.5px/1.4 system-ui,sans-serif;
     white-space:nowrap;
   }
   .hero-language-switcher button{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    min-height:42px;
-    padding:6px 14px;
+    min-width:44px;
+    min-height:44px;
+    padding:6px 11px;
     border:0;
     border-radius:999px;
     background:transparent;
@@ -86,13 +87,13 @@
     cursor:pointer;
     transition:background-color .2s ease,color .2s ease;
   }
-  .hero-language-switcher button[aria-pressed="true"]{background:#E9D3B8;color:#3A2B24}
-  .hero-language-switcher button:hover:not([aria-pressed="true"]){background:rgba(212,163,115,.18)}
+  .hero-language-switcher button[aria-pressed="true"]{background:#EEDCC6;color:#3A2B24}
+  .hero-language-switcher button:hover:not([aria-pressed="true"]){background:rgba(212,163,115,.13)}
   .hero-language-switcher button:focus-visible{outline:2px solid #8C5737;outline-offset:2px}
   .hero-language-switcher #lang-ml{font-family:"Noto Sans Malayalam",sans-serif}
   @media(max-width:760px){
     .hero-language-switcher{top:16px;right:max(16px,env(safe-area-inset-right))}
-    .hero-language-switcher button{padding-inline:12px}
+    .hero-language-switcher button{padding-inline:10px}
   }
   /* Menu toggle disabled.
   .menu-toggle{display:none;min-width:44px;min-height:44px;color:var(--charcoal);background:transparent;border:0;padding:5px;cursor:pointer;font-size:24px;line-height:1}
@@ -569,8 +570,8 @@
     opacity:.5;
   }
   .section .baby-breath-art.baby-breath-art--hero{
-    top:-54px;right:-47px;left:auto;bottom:auto;
-    width:clamp(83px,8vw,118px);transform:rotate(215deg);opacity:.63;
+    top:-64px;right:-62px;left:auto;bottom:auto;
+    width:clamp(83px,8vw,118px);transform:rotate(215deg);opacity:.46;
   }
   .section .baby-breath-art.baby-breath-art--story-bottom{
     bottom:-25px;right:-8px;left:auto;top:auto;
@@ -594,7 +595,7 @@
   }
   @media(max-width:760px){
     .section .baby-breath-art{width:102px}
-    .section .baby-breath-art.baby-breath-art--hero{top:-54px;right:-47px;width:83px;opacity:.63;transform:rotate(215deg)}
+    .section .baby-breath-art.baby-breath-art--hero{top:-64px;right:-62px;width:83px;opacity:.40;transform:rotate(215deg)}
     .section .baby-breath-art.baby-breath-art--story-bottom{bottom:-25px;right:-8px;width:108px;opacity:.68;transform:rotate(-32deg)}
     .section .baby-breath-art.baby-breath-art--details-top{top:-35px;right:-17px;width:92px;opacity:.61;transform:rotate(215deg)}
     .section .baby-breath-art.baby-breath-art--venue-bottom{bottom:-25px;right:-7px;width:108px;opacity:.66;transform:rotate(-32deg)}
