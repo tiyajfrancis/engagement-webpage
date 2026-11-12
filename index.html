@@ -42,18 +42,22 @@
   .skip-link{position:absolute;top:-60px;left:12px;z-index:200;background:var(--ivory);padding:10px 14px;color:var(--charcoal)}
   .skip-link:focus{top:10px}
 
-  /* One restrained stationery-style navigation across all five sections. */
+  /* Stationery-style header. Section-navigation controls are temporarily commented out. */
   .header{min-height:var(--header-h);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 max(24px,calc((100vw - 1320px)/2));background:rgba(253,251,247,.97);border-bottom:1px solid rgba(44,37,35,.14);backdrop-filter:blur(12px)}
   .brand{flex:0 0 auto;color:var(--ink);text-decoration:none;font-size:25px;letter-spacing:.08em;white-space:nowrap}
   .brand .star{color:var(--ochre);text-shadow:0 0 3px rgba(212,163,115,.26)}
   .header-right{display:flex;align-items:center;gap:22px;min-width:0}
+  /* Section navigation disabled. Restore together with the commented HTML/JS below.
   .nav{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
   .nav a{position:relative;padding:9px 0;text-decoration:none;font-size:13px;letter-spacing:.015em;color:var(--ink);white-space:nowrap}
   .nav a:hover::after,.nav a:focus-visible::after{content:'';position:absolute;right:0;bottom:2px;left:0;height:1px;background:var(--terracotta)}
+  */
   .languages{display:flex;align-items:center;gap:7px;margin-left:2px;font:12px/1.5 system-ui,sans-serif;white-space:nowrap;color:var(--ink)}
   .languages button{min-width:34px;min-height:40px;padding:5px 2px;border:0;border-bottom:1px solid transparent;background:transparent;color:inherit;cursor:pointer}
   .languages button[aria-pressed="true"]{border-bottom-color:var(--terracotta)}
+  /* Menu toggle disabled.
   .menu-toggle{display:none;min-width:44px;min-height:44px;color:var(--charcoal);background:transparent;border:0;padding:5px;cursor:pointer;font-size:24px;line-height:1}
+  */
 
   .section{position:relative;isolation:isolate;scroll-margin-top:calc(var(--header-h) + 10px);overflow:hidden}
   .section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('assets/paper-grain.png');background-repeat:repeat;opacity:.24;mix-blend-mode:multiply}
@@ -233,8 +237,10 @@
     :root{--header-h:64px}
     .header{padding-inline:24px;gap:16px}
     .header-right{gap:12px}
+    /* Section navigation disabled.
     .nav{gap:14px}
     .nav a{font-size:12px}
+    */
     .languages{font-size:11px;gap:4px}
     .section-inner{padding-inline:clamp(32px,6vw,54px)}
     .hero{--next-paper:var(--ivory);--deckle-mask:url('assets/deckle-to-ivory.svg');min-height:auto}
@@ -274,10 +280,12 @@
     .header{gap:10px;padding-inline:16px}
     .brand{font-size:20px}
     .header-right{gap:8px}
+    /* Mobile section navigation disabled.
     .menu-toggle{display:block}
     .nav{display:none;position:absolute;top:calc(100% - 1px);right:0;left:0;padding:10px 20px 18px;background:var(--ivory);border-bottom:1px solid rgba(44,37,35,.15);flex-direction:column;align-items:stretch;gap:0;box-shadow:0 12px 22px rgba(44,37,35,.09)}
     .nav.is-open{display:flex}
     .nav a{min-height:44px;display:flex;align-items:center;padding:12px 4px;font-size:14px}
+    */
     .languages{margin-left:0;font-size:12px}
     .languages button{min-width:32px;min-height:40px}
     .section-inner{padding:58px 22px}
@@ -366,7 +374,7 @@
     .header-right{gap:4px}
     .languages{gap:3px;font-size:11px}
     .languages button{min-width:29px}
-    .menu-toggle{min-width:42px;font-size:22px}
+    /* Disabled menu toggle: .menu-toggle{min-width:42px;font-size:22px} */
     .section-inner{padding-inline:18px}
     .rsvp-form{grid-template-columns:minmax(0,1fr);column-gap:0}
     .attendance-options,.form-field--message,.rsvp-form>.send-rsvp,.rsvp-form>.form-status{grid-column:1/-1}
@@ -549,21 +557,19 @@
     .section .baby-breath-art.baby-breath-art--rsvp-top{width:82px}
   }
 
-  /* Logo-free navigation: page links on desktop, centered languages + menu on phones. */
-  .header{justify-content:flex-end}
-  .header-right{width:100%;justify-content:space-between}
-  .header-right .nav{margin-right:auto}
-  .header-right .languages{margin-left:auto}
+  /* With section navigation disabled, center the bilingual selector at every width. */
+  .header{justify-content:center}
+  .header-right{width:100%;justify-content:center}
+  /* Disabled section navigation: .header-right .nav{margin-right:auto} */
+  .header-right .languages{margin-left:0}
   @media(max-width:760px){
     .header{padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
-    .header-right{
-      width:100%;display:grid;
-      grid-template-columns:minmax(44px,1fr) auto minmax(44px,1fr);
-      align-items:center;gap:0;
-    }
-    .header-right .languages{grid-column:2;justify-self:center;margin:0;gap:5px}
+    .header-right{width:100%;display:flex;align-items:center;justify-content:center;gap:0}
+    .header-right .languages{margin:0;gap:5px}
+    /* Disabled mobile navigation:
     .header-right .menu-toggle{grid-column:3;justify-self:end;margin:0}
     .header-right .nav{margin:0}
+    */
   }
   @media(max-width:360px){
     .header-right .languages{gap:2px}
@@ -590,6 +596,7 @@
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
   <header class="header">
     <div class="header-right">
+      <!-- Section navigation disabled; links retained in source for later restoration.
       <nav class="nav" id="main-nav" aria-label="Main navigation">
         <a href="#home" data-i18n="navHome">Invitation</a>
         <a href="#story" data-i18n="navStory">Our Story</a>
@@ -597,12 +604,15 @@
         <a href="#venue" data-i18n="navVenue">Venue</a>
         <a href="#rsvp" data-i18n="navRsvp">RSVP</a>
       </nav>
+      -->
       <div class="languages" role="group" aria-label="Choose language">
         <button type="button" id="lang-en" aria-pressed="true">EN</button>
         <span aria-hidden="true">|</span>
         <button type="button" id="lang-ml" aria-pressed="false">മലയാളം</button>
       </div>
+      <!-- Hamburger toggle disabled:
       <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation">☰</button>
+      -->
     </div>
   </header>
 
@@ -748,7 +758,7 @@
       const targetTime = new Date('2027-01-24T12:00:00+05:30').getTime();
       const translations = {
         en: {
-          occasion:'Engagement ceremony', skip:'Skip to invitation', navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP',
+          occasion:'Engagement ceremony', skip:'Skip to invitation', /* Disabled navigation labels: navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP', */
           join:'Join us', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
           detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTime:'12:00 PM', detailsNote:'Same people. Bigger celebrations.', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
@@ -757,7 +767,7 @@
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
         },
         ml: {
-          occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി',
+          occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', /* Disabled navigation labels: navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി', */
           join:'സ്നേഹത്തോടെ ക്ഷണിക്കുന്നു', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
           detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTime:'ഉച്ചയ്ക്ക് 12:00', detailsNote:'ഒരേ ആളുകൾ. വലിയ ആഘോഷങ്ങൾ.', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
@@ -769,8 +779,10 @@
       let language = 'en';
       const langEn = byId('lang-en');
       const langMl = byId('lang-ml');
+      /* Disabled navigation DOM references:
       const menuToggle = byId('menu-toggle');
       const nav = byId('main-nav');
+      */
 
       function setLanguage(next) {
         if (!translations[next]) return;
@@ -796,7 +808,9 @@
         langEn.setAttribute('aria-pressed', String(next === 'en'));
         langMl.setAttribute('aria-pressed', String(next === 'ml'));
         byId('countdown').setAttribute('aria-label', next === 'en' ? 'Countdown to the engagement' : 'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ');
+        /* Disabled menu accessibility label:
         menuToggle.setAttribute('aria-label', next === 'ml' ? (menuToggle.getAttribute('aria-expanded') === 'true' ? 'മെനു അടയ്ക്കുക' : 'മെനു തുറക്കുക') : (menuToggle.getAttribute('aria-expanded') === 'true' ? 'Close navigation' : 'Open navigation'));
+        */
         byId('back-to-top').setAttribute('aria-label', next === 'ml' ? 'മുകളിലേക്ക് പോകുക' : 'Back to top');
         updateCountdown();
       }
@@ -805,6 +819,7 @@
       langEn.addEventListener('click', () => setLanguage('en'));
       langMl.addEventListener('click', () => setLanguage('ml'));
 
+      /* Disabled section-navigation handlers, link-close behavior and Escape handling:
       menuToggle.addEventListener('click', () => {
         const open = menuToggle.getAttribute('aria-expanded') !== 'true';
         menuToggle.setAttribute('aria-expanded', String(open));
@@ -823,6 +838,7 @@
           menuToggle.focus();
         }
       });
+      */
 
       function updateCountdown() {
         let remaining = targetTime - Date.now();
