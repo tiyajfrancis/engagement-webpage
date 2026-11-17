@@ -1332,17 +1332,69 @@
       updateCountdown();
       window.setInterval(updateCountdown, 1000);
 
+
+      const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxHi8BYDI0P7XEHjRq374yu0ScU0ehaeHnxkthpvhgsp-RFEPp3S5ZAaaOPYKC4dkc7/exec';
+      const form = byId('rsvp-form');
+      const status = byId('form-status');
+      const submit = form.querySelector('[type="submit"]');
       const attendanceInput = byId('attendance');
+      let sending = false, completed = false, pendingPayload = null, statusKey = 'ready';
+      const messages = {
+        en: {ready:'Your response will be shared privately with the couple.', sending:'Sending your RSVP…', success:'Thank you! Your RSVP has been received.', error:'We could not confirm your RSVP. Please try again; retrying will not duplicate it.', invalid:'Please enter your name (up to 100 characters).', send:'Send RSVP', sent:'RSVP received'},
+        ml: {ready:'നിങ്ങളുടെ മറുപടി ദമ്പതികളുമായി സ്വകാര്യമായി പങ്കിടും.', sending:'നിങ്ങളുടെ മറുപടി അയയ്ക്കുന്നു…', success:'നന്ദി! നിങ്ങളുടെ മറുപടി ലഭിച്ചു.', error:'മറുപടി ലഭിച്ചതായി സ്ഥിരീകരിക്കാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കുക; ഒരേ മറുപടി രണ്ടുതവണ രേഖപ്പെടുത്തില്ല.', invalid:'ദയവായി നിങ്ങളുടെ പേര് നൽകുക (100 അക്ഷരങ്ങൾ വരെ).', send:'മറുപടി അയക്കൂ', sent:'മറുപടി ലഭിച്ചു'}
+      };
+      status.removeAttribute('data-i18n');
+      submit.removeAttribute('data-i18n');
+      byId('guest-name').maxLength = 100;
+      byId('guest-message').maxLength = 1000;
+      const trap = document.createElement('input');
+      trap.type = 'text'; trap.name = 'website'; trap.tabIndex = -1; trap.autocomplete = 'off';
+      trap.setAttribute('aria-hidden','true');
+      trap.style.cssText = 'position:absolute;left:-10000px;width:1px;height:1px;opacity:0';
+      form.appendChild(trap);
+      function renderRsvpStatus() {
+        const text = messages[document.documentElement.lang] || messages.en;
+        status.textContent = text[statusKey];
+        submit.textContent = sending ? text.sending : completed ? text.sent : text.send;
+        form.setAttribute('aria-busy',String(sending));
+        form.querySelectorAll('button,input,select,textarea').forEach(el => {
+          el.disabled = sending || completed || (el.id === 'guest-count' && attendanceInput.value === 'no');
+        });
+      }
+      new MutationObserver(renderRsvpStatus).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
       document.querySelectorAll('.attendance-choice').forEach(button => button.addEventListener('click', () => {
-        const selected = button.dataset.attendance;
-        attendanceInput.value = selected;
-        document.querySelectorAll('.attendance-choice').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
-        byId('guest-count').disabled = selected === 'no';
+        attendanceInput.value = button.dataset.attendance;
+        document.querySelectorAll('.attendance-choice').forEach(choice => choice.setAttribute('aria-pressed',String(choice === button)));
+        renderRsvpStatus();
       }));
-      byId('rsvp-form').addEventListener('submit', event => {
+      form.addEventListener('submit', async event => {
         event.preventDefault();
-        byId('form-status').textContent = translations[language].formPreview;
+        if (sending || completed) return;
+        const name = byId('guest-name').value.trim();
+        if (!name || name.length > 100) {
+          statusKey = 'invalid'; renderRsvpStatus(); byId('guest-name').focus(); return;
+        }
+        const values = {name,attendance:attendanceInput.value,guests:attendanceInput.value === 'no' ? 0 : Number(byId('guest-count').value),message:byId('guest-message').value.trim(),language:document.documentElement.lang === 'ml' ? 'ml' : 'en',source:'https://tiyajfrancis.github.io/engagement-webpage/',website:trap.value};
+        const fingerprint = JSON.stringify(values);
+        if (!pendingPayload || pendingPayload.fingerprint !== fingerprint) {
+          pendingPayload = {fingerprint,body:{...values,submissionId:crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)+'-'+Math.random().toString(36).slice(2)}};
+        }
+        sending = true; statusKey = 'sending'; renderRsvpStatus();
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(),30000);
+        try {
+          const response = await fetch(RSVP_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(pendingPayload.body),redirect:'follow',credentials:'omit',signal:controller.signal});
+          if (!response.ok) throw new Error('HTTP failure');
+          const result = await response.json();
+          if (result.ok !== true || result.submissionId !== pendingPayload.body.submissionId) throw new Error('Unconfirmed submission');
+          completed = true; statusKey = 'success';
+        } catch (_) {
+          statusKey = 'error';
+        } finally {
+          clearTimeout(timeout); sending = false; renderRsvpStatus();
+        }
       });
+      renderRsvpStatus();
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const revealItems = Array.from(document.querySelectorAll('.reveal'));
