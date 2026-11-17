@@ -134,6 +134,10 @@
     transition-delay:var(--reveal-delay,0ms);
   }
   .js .reveal.is-visible{opacity:1;translate:0 0}
+  /* Page 1 uses quicker overlapping fades; other sections keep their slower reveals. */
+  .js .hero-invitation .reveal{
+    transition-duration:.68s,.72s;
+  }
   .mockup-art{position:absolute;z-index:1;pointer-events:none;height:auto;object-fit:contain;opacity:.42}
   .mockup-art--hero{left:-8px;top:48px;width:clamp(130px,17vw,240px);mix-blend-mode:screen}
   .baby-breath-art{position:absolute;z-index:1;display:block;max-width:none;height:auto;pointer-events:none;user-select:none;object-fit:contain}
@@ -1710,12 +1714,12 @@
         // its caption begin separately, even when they share the first viewport.
         // Elements below the fold wait until scrolled into view.
         const heroReveals = new Set(document.querySelectorAll('.hero-invitation .reveal'));
-        let nextHeroRevealAt = performance.now() + 120;
+        let nextHeroRevealAt = performance.now() + 60;
         const revealHeroItem = item => {
           const now = performance.now();
-          const start = Math.max(nextHeroRevealAt, now + 80);
+          const start = Math.max(nextHeroRevealAt, now + 40);
           item.style.setProperty('--reveal-delay', `${Math.round(start - now)}ms`);
-          nextHeroRevealAt = start + 760;
+          nextHeroRevealAt = start + 300;
           // Start the transition after the hidden state has been painted.
           requestAnimationFrame(() => requestAnimationFrame(() => {
             item.classList.add('is-visible');
