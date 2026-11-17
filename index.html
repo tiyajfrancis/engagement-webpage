@@ -1076,6 +1076,8 @@
     color:#FFF0DD;
     font-family:"Cormorant Garamond",serif;
     font-size:clamp(39px,10.3vw,112px);
+    text-align:center;
+    max-width:100%;
     line-height:.92;
     font-weight:500;
     letter-spacing:-.038em;
@@ -1163,14 +1165,16 @@
   .hero .hero-photo-stage{
     position:relative;
     width:100%;
-    aspect-ratio:.945;
+    aspect-ratio:.90;
     overflow:hidden;
     isolation:isolate;
     background:#EEE9E1;
   }
   .hero .hero-photo{
     object-fit:cover;
-    object-position:center 12%;
+    object-position:center top;
+    transform:scale(1.095);
+    transform-origin:50% 18%;
   }
   .hero .hero-polaroid-tape{
     position:absolute;
@@ -1180,7 +1184,7 @@
     width:clamp(88px,19vw,180px);
     height:clamp(24px,4.4vw,42px);
     transform:translateX(-50%) rotate(-4deg);
-    background:rgba(218,174,124,.74);
+    background:rgba(218,174,124,.66);
     clip-path:polygon(0 5%,100% 0,99% 94%,0 100%);
     box-shadow:0 2px 4px rgba(45,35,23,.11);
     pointer-events:none;
@@ -1293,37 +1297,38 @@
   html[lang="ml"] .hero .hero-event-date{font-size:clamp(22px,4.1vw,42px)}
   html[lang="ml"] .hero .hero-event-time{font-size:clamp(14px,2.5vw,22px);white-space:normal}
   html[lang="ml"] .hero .hero-photo-caption{font-size:clamp(13px,2vw,21px)}
+  /* Mobile Page 1 proportions, consolidated in the existing hero override. */
   @media(max-width:760px){
     .hero .section-inner{
       padding-top:clamp(103px,15vw,118px);
       padding-inline:clamp(14px,4vw,24px);
-      padding-bottom:clamp(115px,20vw,160px);
+      padding-bottom:clamp(75px,22vw,105px);
     }
-    .hero .hero-couple-title{font-size:clamp(38px,10vw,73px)}
+    .hero .hero-couple-title{font-size:clamp(40px,12.8vw,58px)}
     .hero .hero-new-beginning{font-size:clamp(36px,7.2vw,56px)}
     .hero .hero-event-date{margin-top:clamp(33px,6vw,48px)}
-    .hero .hero-polaroid{width:min(83%,470px);margin-top:clamp(34px,5vw,53px)}
-    .hero .hero-photo-caption{min-height:58px;font-size:clamp(15px,2.8vw,23px)}
-    .hero .hero-breath--top{top:-20px;left:-35px;width:clamp(115px,24vw,175px);opacity:.83}
-    .hero .hero-breath--top-soft{top:-20px;left:66px;width:104px}
-    .hero .hero-breath--bottom{right:-43px;bottom:-10px;width:clamp(155px,31vw,220px)}
-    .hero .hero-breath--bottom-soft{right:52px;bottom:5px;width:130px}
-    .hero .hero-breath--left-soft{left:-50px;bottom:10px;width:105px}
+    .hero .hero-polaroid{width:min(62vw,430px);margin-top:clamp(34px,5vw,53px)}
+    .hero .hero-polaroid-tape{width:19vw;min-width:58px;max-width:98px;height:clamp(19px,5.8vw,25px);top:-11px}
+    .hero .hero-photo-caption{min-height:45px;font-size:clamp(12px,3.4vw,15px);padding:7px 3px 5px;line-height:1.12}
+    .hero .hero-language-switcher{top:max(20px,env(safe-area-inset-top));right:max(20px,env(safe-area-inset-right))}
+    .hero .hero-language-switcher button{min-height:44px}
+    .hero .hero-breath--top{top:-24px;left:-34px;width:clamp(85px,23vw,100px);transform:rotate(18deg);opacity:.89}
+    .hero .hero-breath--top-soft{top:-47px;left:74px;width:clamp(100px,24vw,116px);transform:rotate(-24deg);opacity:.22;filter:blur(12px)}
+    .hero .hero-breath--bottom{right:-53px;bottom:-25px;width:clamp(130px,38vw,165px);transform:rotate(-32deg);opacity:.88}
+    .hero .hero-breath--bottom-soft{right:55px;bottom:-40px;width:clamp(100px,29vw,125px);transform:rotate(-15deg);opacity:.19;filter:blur(13px)}
+    .hero .hero-breath--left-soft{left:-48px;bottom:-30px;width:clamp(90px,24vw,112px);transform:rotate(33deg);opacity:.16;filter:blur(14px)}
   }
   @media(max-width:420px){
     .hero .hero-eyebrow{font-size:11px;letter-spacing:.17em;gap:9px}
     .hero .hero-eyebrow::before,.hero .hero-eyebrow::after{width:19px}
-    .hero .hero-couple-title{font-size:clamp(35px,10vw,42px)}
+    .hero .hero-couple-title{font-size:clamp(40px,12.8vw,58px)}
     .hero .hero-new-beginning{font-size:clamp(32px,9vw,39px)}
     .hero .hero-new-beginning::before,.hero .hero-new-beginning::after{flex-basis:14px}
     .hero .hero-event-date{font-size:clamp(28px,7.4vw,34px)}
     .hero .hero-event-time{font-size:clamp(15px,4.1vw,18px);letter-spacing:.12em}
-    .hero .hero-polaroid{width:min(90%,355px)}
-    .hero .hero-photo-caption{font-size:clamp(14px,4vw,17px);padding-inline:2px}
-    .hero .hero-language-switcher{top:17px;right:15px}
-    .hero .hero-language-switcher button{min-width:39px;min-height:38px;padding:3px 9px}
-    .hero .hero-breath--top{width:121px;top:-25px;left:-31px}
-    .hero .hero-breath--bottom{width:166px;right:-34px;bottom:-6px}
+    .hero .hero-polaroid{width:min(62vw,340px)}
+    .hero .hero-photo-caption{font-size:clamp(12px,3.4vw,15px);padding-inline:3px}
+    .hero .hero-language-switcher button{min-width:39px;min-height:44px;padding:3px 9px}
     html[lang="ml"] .hero .hero-couple-title{font-size:clamp(23px,6.2vw,27px)}
   }
 
