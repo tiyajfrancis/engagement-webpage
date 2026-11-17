@@ -1023,6 +1023,310 @@
     .rsvp-form .attendance-options button{font-size:13px}
     .rsvp-form .attendance-options{gap:7px}
   }
+
+  /* Page 1 — reference-faithful, centered editorial invitation.
+     This is intentionally scoped to .hero: all later pages keep their existing design. */
+  .hero{
+    min-height:100svh;
+    background:
+      radial-gradient(ellipse at 50% 35%,rgba(161,177,150,.08),transparent 64%),
+      linear-gradient(136deg,#52654e 0%,#455943 57%,#52664e 100%);
+    color:var(--ivory);
+  }
+  .hero .section-inner{
+    width:min(1100px,100%);
+    padding:clamp(111px,12.5vw,175px) clamp(16px,4vw,48px) clamp(145px,15vw,220px);
+  }
+  .hero .hero-invitation{
+    position:relative;
+    z-index:3;
+    width:min(100%,920px);
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    isolation:isolate;
+  }
+  .hero .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(12px,2.5vw,27px);
+    width:100%;
+    margin:0;
+    color:#F9EBDD;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(12px,2.45vw,26px);
+    line-height:1.2;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.19em;
+    white-space:nowrap;
+  }
+  .hero .hero-eyebrow::before,.hero .hero-eyebrow::after{
+    content:"";
+    width:clamp(20px,7vw,65px);
+    height:1px;
+    flex:0 1 auto;
+    background:rgba(252,241,222,.72);
+  }
+  .hero .hero-couple-title{
+    margin:clamp(23px,3.2vw,36px) 0 0;
+    color:#FFF0DD;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(39px,10.3vw,112px);
+    line-height:.92;
+    font-weight:500;
+    letter-spacing:-.038em;
+    text-transform:none;
+    white-space:nowrap;
+    overflow-wrap:normal;
+    text-shadow:none;
+  }
+  .hero .hero-ampersand{font-weight:400;letter-spacing:-.06em}
+  .hero .hero-new-beginning{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:clamp(8px,1.8vw,17px);
+    max-width:100%;
+    margin:clamp(7px,1.3vw,16px) 0 0;
+    color:#F9EBDD;
+    font-family:"Allura",cursive;
+    font-size:clamp(39px,6.3vw,72px);
+    font-weight:400;
+    line-height:1.13;
+    white-space:nowrap;
+    text-shadow:none;
+  }
+  .hero .hero-new-beginning::before,.hero .hero-new-beginning::after{
+    content:"";
+    flex:0 0 clamp(17px,5.3vw,75px);
+    height:8px;
+    border-bottom:1px solid rgba(253,241,220,.92);
+    border-radius:0 0 50% 50%;
+    transform:rotate(-8deg) translateY(-2px);
+  }
+  .hero .hero-new-beginning::after{transform:rotate(8deg) translateY(-2px)}
+  .hero .hero-event-date{
+    display:block;
+    margin:clamp(39px,5vw,63px) 0 0;
+    color:#FFF0DD;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(32px,5.8vw,62px);
+    line-height:1.05;
+    font-weight:500;
+    letter-spacing:.035em;
+    white-space:nowrap;
+  }
+  .hero .hero-star-rule{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(11px,2vw,20px);
+    width:min(31%,230px);
+    margin:clamp(16px,2.15vw,24px) auto 0;
+    color:#F7E8D2;
+  }
+  .hero .hero-star-rule::before,.hero .hero-star-rule::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:rgba(251,237,218,.82);
+  }
+  .hero .hero-star-rule span{font-size:clamp(15px,2vw,23px);line-height:1}
+  .hero .hero-event-time{
+    margin:clamp(15px,1.9vw,21px) 0 0;
+    color:#F8EADB;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(17px,3vw,31px);
+    line-height:1.2;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .hero .hero-polaroid{
+    position:relative;
+    width:min(66%,570px);
+    max-width:100%;
+    margin:clamp(46px,6vw,76px) auto 0;
+    padding:clamp(9px,1.8vw,19px) clamp(9px,1.8vw,19px) 0;
+    background:#FDF5EB;
+    border:1px solid rgba(255,244,229,.82);
+    border-radius:clamp(3px,.5vw,7px);
+    box-shadow:0 20px 32px rgba(22,31,20,.34),0 2px 8px rgba(23,29,19,.15);
+    transform:rotate(-.45deg);
+    overflow:visible;
+  }
+  .hero .hero-photo-stage{
+    position:relative;
+    width:100%;
+    aspect-ratio:.945;
+    overflow:hidden;
+    isolation:isolate;
+    background:#EEE9E1;
+  }
+  .hero .hero-photo{
+    object-fit:cover;
+    object-position:center 12%;
+  }
+  .hero .hero-polaroid-tape{
+    position:absolute;
+    z-index:6;
+    left:50%;
+    top:clamp(-17px,-2.1vw,-9px);
+    width:clamp(88px,19vw,180px);
+    height:clamp(24px,4.4vw,42px);
+    transform:translateX(-50%) rotate(-4deg);
+    background:rgba(218,174,124,.74);
+    clip-path:polygon(0 5%,100% 0,99% 94%,0 100%);
+    box-shadow:0 2px 4px rgba(45,35,23,.11);
+    pointer-events:none;
+  }
+  .hero .hero-photo-caption{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:clamp(50px,8vw,93px);
+    padding:clamp(11px,2.1vw,24px) clamp(5px,1vw,10px);
+    color:#624638;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(17px,2.85vw,29px);
+    font-weight:500;
+    font-style:italic;
+    line-height:1.06;
+    letter-spacing:-.012em;
+    text-align:center;
+    text-wrap:balance;
+  }
+  /* Real baby's-breath asset used elsewhere on the site, once sharp at each corner
+     and reused with blur and low opacity to create the photographic bokeh. */
+  .hero .hero-breath{
+    position:absolute;
+    z-index:1;
+    max-width:none;
+    height:auto;
+    pointer-events:none;
+    user-select:none;
+    object-fit:contain;
+    transform-origin:center;
+  }
+  .hero .hero-breath--top{
+    top:-35px;left:-39px;
+    width:clamp(148px,22vw,300px);
+    transform:scaleX(-1) rotate(215deg);
+    opacity:.93;
+  }
+  .hero .hero-breath--top-soft{
+    top:-22px;left:clamp(80px,13vw,210px);
+    width:clamp(100px,16vw,215px);
+    transform:scaleX(-1) rotate(202deg);
+    opacity:.26;
+    filter:blur(11px);
+  }
+  .hero .hero-breath--bottom{
+    right:-50px;bottom:-12px;
+    width:clamp(200px,28vw,370px);
+    transform:rotate(-32deg);
+    opacity:.92;
+  }
+  .hero .hero-breath--bottom-soft{
+    right:clamp(55px,12vw,215px);bottom:-20px;
+    width:clamp(130px,21vw,270px);
+    transform:rotate(-24deg);
+    opacity:.25;
+    filter:blur(12px);
+  }
+  .hero .hero-breath--left-soft{
+    left:-68px;bottom:0;
+    width:clamp(125px,16vw,220px);
+    transform:rotate(33deg);
+    opacity:.21;
+    filter:blur(14px);
+  }
+  .hero .hero-language-switcher{
+    top:clamp(16px,3.8vw,62px);
+    right:clamp(16px,5.5vw,82px);
+    padding:2px;
+    background:rgba(54,72,52,.15);
+    border:1px solid rgba(248,232,208,.85);
+    box-shadow:0 2px 6px rgba(20,28,19,.12);
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(14px,2.3vw,22px);
+    font-weight:600;
+    color:#FFF4E5;
+  }
+  .hero .hero-language-switcher .language-thumb{
+    background:#FAECD8;
+    box-shadow:0 1px 3px rgba(24,31,20,.12);
+  }
+  .hero .hero-language-switcher button{
+    min-height:clamp(36px,4.8vw,52px);
+    min-width:clamp(42px,5.2vw,61px);
+    padding:4px clamp(9px,1.3vw,17px);
+    color:#FAECDA;
+  }
+  .hero .hero-language-switcher button[aria-pressed="true"]{color:#354532}
+  .hero .hero-language-switcher #lang-ml{
+    font-family:"Noto Sans Malayalam",sans-serif;
+    font-size:.78em;
+  }
+  /* This page is static typography, not shimmering metallic text. */
+  .hero :is(.hero-eyebrow,.hero-couple-title,.hero-new-beginning,.hero-event-date,.hero-event-time,.hero-star-rule span){
+    animation:none;
+    text-shadow:none;
+  }
+  html[lang="ml"] .hero .hero-invitation :is(.hero-eyebrow,.hero-couple-title,.hero-event-date,.hero-event-time,.hero-new-beginning,.hero-photo-caption){
+    font-family:"Noto Sans Malayalam",sans-serif;
+    letter-spacing:normal;
+    line-height:1.55;
+  }
+  html[lang="ml"] .hero .hero-couple-title{
+    font-size:clamp(25px,5.8vw,60px);
+    font-weight:500;
+    white-space:normal;
+  }
+  html[lang="ml"] .hero .hero-eyebrow{font-size:clamp(12px,2vw,19px);white-space:normal}
+  html[lang="ml"] .hero .hero-new-beginning{font-size:clamp(22px,4.1vw,43px)}
+  html[lang="ml"] .hero .hero-event-date{font-size:clamp(22px,4.1vw,42px)}
+  html[lang="ml"] .hero .hero-event-time{font-size:clamp(14px,2.5vw,22px);white-space:normal}
+  html[lang="ml"] .hero .hero-photo-caption{font-size:clamp(13px,2vw,21px)}
+  @media(max-width:760px){
+    .hero .section-inner{
+      padding-top:clamp(103px,15vw,118px);
+      padding-inline:clamp(14px,4vw,24px);
+      padding-bottom:clamp(115px,20vw,160px);
+    }
+    .hero .hero-couple-title{font-size:clamp(38px,10vw,73px)}
+    .hero .hero-new-beginning{font-size:clamp(36px,7.2vw,56px)}
+    .hero .hero-event-date{margin-top:clamp(33px,6vw,48px)}
+    .hero .hero-polaroid{width:min(83%,470px);margin-top:clamp(34px,5vw,53px)}
+    .hero .hero-photo-caption{min-height:58px;font-size:clamp(15px,2.8vw,23px)}
+    .hero .hero-breath--top{top:-20px;left:-35px;width:clamp(115px,24vw,175px);opacity:.83}
+    .hero .hero-breath--top-soft{top:-20px;left:66px;width:104px}
+    .hero .hero-breath--bottom{right:-43px;bottom:-10px;width:clamp(155px,31vw,220px)}
+    .hero .hero-breath--bottom-soft{right:52px;bottom:5px;width:130px}
+    .hero .hero-breath--left-soft{left:-50px;bottom:10px;width:105px}
+  }
+  @media(max-width:420px){
+    .hero .hero-eyebrow{font-size:11px;letter-spacing:.17em;gap:9px}
+    .hero .hero-eyebrow::before,.hero .hero-eyebrow::after{width:19px}
+    .hero .hero-couple-title{font-size:clamp(35px,10vw,42px)}
+    .hero .hero-new-beginning{font-size:clamp(32px,9vw,39px)}
+    .hero .hero-new-beginning::before,.hero .hero-new-beginning::after{flex-basis:14px}
+    .hero .hero-event-date{font-size:clamp(28px,7.4vw,34px)}
+    .hero .hero-event-time{font-size:clamp(15px,4.1vw,18px);letter-spacing:.12em}
+    .hero .hero-polaroid{width:min(90%,355px)}
+    .hero .hero-photo-caption{font-size:clamp(14px,4vw,17px);padding-inline:2px}
+    .hero .hero-language-switcher{top:17px;right:15px}
+    .hero .hero-language-switcher button{min-width:39px;min-height:38px;padding:3px 9px}
+    .hero .hero-breath--top{width:121px;top:-25px;left:-31px}
+    .hero .hero-breath--bottom{width:166px;right:-34px;bottom:-6px}
+    html[lang="ml"] .hero .hero-couple-title{font-size:clamp(23px,6.2vw,27px)}
+  }
+
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -1049,39 +1353,37 @@
       <button type="button" id="lang-ml" aria-label="മലയാളം" aria-pressed="false">മലയാളം</button>
     </div>
 
+    <!-- Two crisp sprigs and three diffused layers recreate the reference photo's depth. -->
+    <img class="hero-breath hero-breath--top" src="assets/babys-breath.png" alt="" aria-hidden="true" width="256" height="256">
+    <img class="hero-breath hero-breath--top-soft" src="assets/babys-breath.png" alt="" aria-hidden="true" width="256" height="256">
+    <img class="hero-breath hero-breath--bottom" src="assets/babys-breath.png" alt="" aria-hidden="true" width="256" height="256">
+    <img class="hero-breath hero-breath--bottom-soft" src="assets/babys-breath.png" alt="" aria-hidden="true" width="256" height="256">
+    <img class="hero-breath hero-breath--left-soft" src="assets/babys-breath.png" alt="" aria-hidden="true" width="256" height="256">
 
     <div class="section-inner">
-      <div class="hero-layout">
-        <div class="hero-copy">
-          <div class="hero-heading reveal">
-            <p class="join-line script" data-i18n="join">Join us</p>
-            <h1 class="display-title main-title" id="main-title" data-i18n="celebrateHeadline">To celebrate</h1>
-            <p class="script script-title" data-i18n="newBeginning">A new beginning</p>
+      <div class="hero-invitation">
+        <p class="hero-eyebrow reveal" data-i18n="join">Join us to celebrate</p>
+        <h1 class="hero-couple-title reveal" id="main-title">
+          <span data-i18n="arathy">Arathy</span><span class="hero-ampersand"> &amp; </span><span data-i18n="pranav">Pranav</span>
+        </h1>
+        <p class="hero-new-beginning script reveal" data-i18n="newBeginning">A new beginning</p>
+        <time class="hero-event-date reveal" datetime="2027-01-24" data-i18n="heroDate">24 January 2027</time>
+        <div class="hero-star-rule reveal" aria-hidden="true"><span>✦</span></div>
+        <p class="hero-event-time reveal" data-i18n="timeLine">Sunday at 12:00 PM</p>
+
+        <figure class="hero-polaroid reveal">
+          <span class="hero-polaroid-tape" aria-hidden="true"></span>
+          <div class="hero-photo-stage" role="img" aria-label="Arathy and Pranav together, including a pose showing Arathy's ring">
+            <img class="hero-photo hero-photo--first" src="assets/couple-frame-2.jpeg" width="793" height="992" alt="Arathy and Pranav showing the ring" fetchpriority="high">
+            <img class="hero-photo hero-photo--ring" src="assets/couple-frame-1.jpeg" width="793" height="992" alt="" aria-hidden="true" loading="eager">
           </div>
-          <div class="names reveal" aria-label="Pranav and Arathy">
-            <span class="name" data-i18n="pranav">Pranav</span>
-            <span class="rings" aria-hidden="true"><img class="rings-image" src="assets/gold-wedding-rings.png" width="276" height="158" alt=""></span>
-            <span class="name" data-i18n="arathy">Arathy</span>
-          </div>
-          <div class="date-strip reveal" aria-label="January 24, 2027"><span class="date-unit" data-i18n="month">JAN</span><span class="date-unit date-day">24</span><span class="date-unit">2027</span></div>
-          <p class="time-line reveal" data-i18n="timeLine">Sunday at 12:00 PM</p>
-          <p class="intro-line reveal" data-i18n="intro">Your presence, love, and blessings would mean the world to us.</p>
-        </div>
-        <div class="hero-visual">
-          <figure class="photo-frame reveal">
-            <span class="paper-tape" aria-hidden="true"></span>
-            <div class="photo-stack" role="img" aria-label="Arathy and Pranav together; the second pose reveals Arathy’s engagement ring.">
-              <img class="hero-photo hero-photo--first" src="assets/couple-frame-1.jpeg" width="793" height="992" alt="Arathy and Pranav sitting together" fetchpriority="high">
-              <img class="hero-photo hero-photo--ring" src="assets/couple-frame-2.jpeg" width="793" height="992" alt="Arathy showing her engagement ring" loading="eager" aria-hidden="true">
-            </div>
-          </figure>
-          <p class="story-kicker reveal"><span data-i18n="storyKicker">Two main characters. One shared storyline.</span><span class="star" aria-hidden="true">♡</span></p>
-        </div>
+          <figcaption class="hero-photo-caption" data-i18n="storyKicker">Two main characters. One shared storyline.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="section story-section deckled-transition" id="story" aria-labelledby="story-title">
+    <section class="section story-section deckled-transition" id="story" aria-labelledby="story-title">
 
 
 
@@ -1204,7 +1506,7 @@
       const translations = {
         en: {
           occasion:'Engagement ceremony', skip:'Skip to invitation', /* Disabled navigation labels: navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP', */
-          join:'Join us', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
+          join:'Join us to celebrate', heroDate:'24 January 2027', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
           detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTime:'12:00 PM', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
           venueLabel:'The venue', venueHeadline:"Let's meet here", venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', venueDescription:'A lovely place to gather, celebrate, and share this special day with our favourite people.', qrCaption:'Scan for the venue location', directions:'View location ↗',
@@ -1213,7 +1515,7 @@
         },
         ml: {
           occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', /* Disabled navigation labels: navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി', */
-          join:'സ്നേഹത്തോടെ ക്ഷണിക്കുന്നു', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
+          join:'സ്നേഹത്തോടെ ആഘോഷിക്കാൻ ക്ഷണിക്കുന്നു', heroDate:'24 ജനുവരി 2027', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
           detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTime:'ഉച്ചയ്ക്ക് 12:00', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
           venueLabel:'വേദി', venueHeadline:'ഇവിടെ കണ്ടുമുട്ടാം', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', venueDescription:'പ്രിയപ്പെട്ടവരോടൊപ്പം ഒത്തുചേർന്ന് ഈ പ്രത്യേക ദിവസം ആഘോഷിക്കാനുള്ള മനോഹരമായ ഇടം.', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
