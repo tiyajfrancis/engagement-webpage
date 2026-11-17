@@ -1382,7 +1382,7 @@
             <img class="hero-photo hero-photo--first" src="assets/couple-frame-2.jpeg" width="793" height="992" alt="Arathy and Pranav showing the ring" fetchpriority="high">
             <img class="hero-photo hero-photo--ring" src="assets/couple-frame-1.jpeg" width="793" height="992" alt="" aria-hidden="true" loading="eager">
           </div>
-          <figcaption class="hero-photo-caption" data-i18n="storyKicker">Two main characters. One shared storyline.</figcaption>
+          <figcaption class="hero-photo-caption reveal" data-i18n="storyKicker">Two main characters. One shared storyline.</figcaption>
         </figure>
       </div>
     </div>
@@ -1706,8 +1706,22 @@
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const revealItems = Array.from(document.querySelectorAll('.reveal'));
       if ('IntersectionObserver' in window && !reduceMotion) {
-        // Editorial copy and form rows reveal individually, while photo frames
-        // fade as complete compositions (without losing their original rotation).
+        // Give page 1 its own ordered reveal: each line, the photograph, and
+        // its caption begin separately, even when they share the first viewport.
+        // Elements below the fold wait until scrolled into view.
+        const heroReveals = new Set(document.querySelectorAll('.hero-invitation .reveal'));
+        let nextHeroRevealAt = performance.now() + 120;
+        const revealHeroItem = item => {
+          const now = performance.now();
+          const start = Math.max(nextHeroRevealAt, now + 80);
+          item.style.setProperty('--reveal-delay', `${Math.round(start - now)}ms`);
+          nextHeroRevealAt = start + 760;
+          // Start the transition after the hidden state has been painted.
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            item.classList.add('is-visible');
+          }));
+        };
+        // Other sections retain their existing scroll-reveal behavior.
         const textContainers = '.hero-heading, .story-copy, .venue-copy, .rsvp-copy, .rsvp-form';
         const inInitialViewport = node => {
           const box = node.getBoundingClientRect();
@@ -1717,15 +1731,22 @@
           entries.filter(entry => entry.isIntersecting)
             .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
             .forEach((entry, index) => {
-              // A small stagger makes successive items feel deliberately revealed.
-              entry.target.style.setProperty('--reveal-delay', `${Math.min(index, 4) * 95}ms`);
-              entry.target.classList.add('is-visible');
+              if (heroReveals.has(entry.target)) {
+                revealHeroItem(entry.target);
+              } else {
+                // A small stagger keeps non-hero scroll reveals restrained.
+                entry.target.style.setProperty('--reveal-delay', `${Math.min(index, 4) * 95}ms`);
+                entry.target.classList.add('is-visible');
+              }
               observer.unobserve(entry.target);
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -55px 0px' });
 
         revealItems.forEach(item => {
-          if (item.matches(textContainers) || inInitialViewport(item)) {
+          if (heroReveals.has(item)) {
+            if (inInitialViewport(item)) revealHeroItem(item);
+            else observer.observe(item);
+          } else if (item.matches(textContainers) || inInitialViewport(item)) {
             item.classList.add('is-visible');
           } else {
             observer.observe(item);
