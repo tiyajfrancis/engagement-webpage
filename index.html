@@ -1332,6 +1332,168 @@
     html[lang="ml"] .hero .hero-couple-title{font-size:clamp(23px,6.2vw,27px)}
   }
 
+
+  /* Save-the-Date typography: vertical reading path on phones; balanced editorial columns on wide screens. */
+  .details-section .divider{margin:clamp(16px,2.4vw,24px) auto clamp(14px,2.2vw,22px)}
+  .details-section .save-date{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr);
+    grid-template-areas:"weekday day year" ". month ." ". time .";
+    justify-items:center;
+    align-items:center;
+    column-gap:clamp(12px,2.7vw,28px);
+    row-gap:0;
+    margin-top:clamp(16px,2.8vw,26px);
+    padding:clamp(25px,3vw,34px) 0 clamp(29px,3.5vw,38px);
+  }
+  .details-section .save-date-center{display:contents}
+  .details-section .save-date-weekday{
+    grid-area:weekday;
+    align-self:center;
+    margin:0;
+    font-size:clamp(19px,2.2vw,24px);
+    line-height:1.3;
+    letter-spacing:.055em;
+  }
+  .details-section .save-date-day{grid-area:day;font-size:clamp(82px,9vw,108px);line-height:.9}
+  .details-section .save-date-month{
+    grid-area:month;
+    margin-top:11px;
+    font-size:clamp(23px,2.6vw,29px);
+    line-height:1.15;
+    letter-spacing:.065em;
+  }
+  .details-section .save-date-year{
+    grid-area:year;
+    align-self:center;
+    color:#89563A;
+    font:500 clamp(19px,2.2vw,24px)/1.3 "Cormorant Garamond",serif;
+    letter-spacing:.07em;
+  }
+  .details-section .save-date-time{
+    grid-area:time;
+    max-width:none;
+    margin-top:clamp(17px,2.2vw,24px);
+    font:500 clamp(28px,3.4vw,38px)/1.15 "Cormorant Garamond",serif;
+    white-space:normal;
+  }
+  .details-section .countdown-heading{
+    margin:clamp(24px,3.4vw,34px) auto clamp(15px,2vw,22px);
+    color:#794C33;
+    font:600 clamp(13px,1.7vw,19px)/1.5 "Cormorant Garamond",serif;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    text-align:center;
+  }
+  .details-section .count-item{gap:clamp(8px,1.3vw,13px)}
+  .details-section .flip-card{order:0}
+  .details-section .count-label{
+    order:1;
+    min-height:0;
+    align-items:center;
+    font-size:clamp(12px,1.7vw,19px);
+  }
+  html[lang="ml"] .details-section .save-date-weekday{
+    font:500 clamp(16px,2vw,23px)/1.5 "Noto Sans Malayalam",sans-serif;
+    letter-spacing:normal;
+  }
+  html[lang="ml"] .details-section .save-date-month{
+    font:500 clamp(17px,2.1vw,24px)/1.5 "Noto Sans Malayalam",sans-serif;
+    letter-spacing:normal;
+  }
+  html[lang="ml"] .details-section .save-date-time{
+    font:500 clamp(17px,2.1vw,24px)/1.5 "Noto Sans Malayalam",sans-serif;
+    white-space:normal;
+  }
+  html[lang="ml"] .details-section .countdown-heading{
+    font:500 clamp(12px,1.6vw,17px)/1.65 "Noto Sans Malayalam",sans-serif;
+    letter-spacing:normal;
+    text-transform:none;
+  }
+  @media(max-width:760px){
+    .details-section .section-inner{
+      padding-top:clamp(64px,10vw,82px);
+      padding-bottom:clamp(195px,32vw,230px);
+    }
+    .details-section .details-script{font-size:clamp(46px,10.5vw,65px)}
+    .details-section .divider{margin:17px auto 17px}
+    .details-section .save-date{
+      width:min(580px,100%);
+      grid-template-columns:minmax(0,1fr);
+      grid-template-areas:"weekday" "day" "month" "year" "time";
+      column-gap:0;
+      row-gap:0;
+      margin-top:18px;
+      padding:clamp(24px,5.8vw,30px) 0 clamp(25px,5.8vw,30px);
+    }
+    .details-section .save-date-weekday{
+      margin:0;
+      font-size:clamp(20px,5.8vw,24px);
+      line-height:1.3;
+      letter-spacing:.07em;
+    }
+    .details-section .save-date-day{
+      margin-top:2px;
+      font-size:clamp(78px,22vw,100px);
+      line-height:.93;
+    }
+    .details-section .save-date-month{
+      margin-top:5px;
+      font-size:clamp(26px,7.1vw,34px);
+      line-height:1.12;
+      letter-spacing:.065em;
+    }
+    .details-section .save-date-year{
+      margin-top:8px;
+      font-size:clamp(22px,6vw,28px);
+      letter-spacing:.07em;
+      line-height:1.2;
+    }
+    .details-section .save-date-time{
+      margin-top:clamp(20px,5vw,27px);
+      font-size:clamp(29px,8.5vw,38px);
+      line-height:1.2;
+      letter-spacing:.03em;
+    }
+    .details-section .save-date-time::before{
+      content:"";
+      display:block;
+      width:34px;
+      height:1px;
+      margin:0 auto 14px;
+      background:rgba(167,93,67,.52);
+    }
+    .details-section .countdown-heading{
+      margin:clamp(23px,6vw,31px) auto 15px;
+      font-size:clamp(12px,3.6vw,16px);
+      letter-spacing:.11em;
+    }
+    .details-section .count-label{font-size:clamp(10px,3vw,14px);min-height:0}
+    html[lang="ml"] .details-section .save-date-weekday{
+      font-size:clamp(17px,4.8vw,22px);
+    }
+    html[lang="ml"] .details-section .save-date-month{
+      font-size:clamp(21px,6vw,29px);
+    }
+    html[lang="ml"] .details-section .save-date-time{
+      max-width:100%;
+      font-size:clamp(21px,6.3vw,30px);
+      line-height:1.5;
+    }
+    html[lang="ml"] .details-section .countdown-heading{
+      max-width:100%;
+      font-size:clamp(12px,3.5vw,15px);
+      line-height:1.6;
+    }
+  }
+  @media(max-width:360px){
+    .details-section .save-date-weekday{font-size:20px}
+    .details-section .save-date-month{font-size:26px}
+    .details-section .save-date-year{font-size:22px}
+    .details-section .save-date-time{font-size:29px}
+    html[lang="ml"] .details-section .save-date-time{font-size:20px}
+  }
+
   </style></head>
 <body>
   <a class="skip-link" href="#home" data-i18n="skip">Skip to invitation</a>
@@ -1414,19 +1576,18 @@
 
     <div class="details-landscape" aria-hidden="true"></div>
     <div class="section-inner">
-      <p class="micro reveal" data-i18n="detailsLabel">The details</p>
       <h2 class="script details-script reveal" id="details-title" data-i18n="saveDate">Save the Date</h2>
       <div class="divider reveal" aria-hidden="true"><span>♡</span></div>
       <div class="save-date reveal">
-        <span class="save-date-side" data-i18n="sunday">Sunday</span>
+        <span class="save-date-side save-date-weekday" data-i18n="sunday">Sunday</span>
         <div class="save-date-center">
           <span class="save-date-day">24</span>
           <span class="save-date-month" data-i18n="january">January</span>
+          <span class="save-date-year">2027</span>
           <time class="save-date-time" datetime="2027-01-24T12:00:00+05:30" data-i18n="eventTime">12:00 PM</time>
         </div>
-        <span class="save-date-side">2027</span>
       </div>
-      <div class="details-ornament reveal" aria-hidden="true">❀</div>
+      <p class="countdown-heading reveal" data-i18n="countdownIntro">Countdown to our day</p>
       <div class="countdown reveal" id="countdown" aria-label="Countdown to the engagement" aria-live="off">
         <div class="count-item">
           <span class="count-label" data-i18n="days">Days</span>
@@ -1509,7 +1670,7 @@
           occasion:'Engagement ceremony', skip:'Skip to invitation', /* Disabled navigation labels: navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP', */
           join:'Join us to celebrate', heroDate:'24 January 2027', celebrateHeadline:'To celebrate', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
-          detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTime:'12:00 PM', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
+          saveDate:'Save the Date', countdownIntro:'Countdown to our day', sunday:'Sunday', january:'January', eventTime:'12:00 PM', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
           venueLabel:'The venue', venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', qrCaption:'Scan for the venue location', directions:'View location ↗',
           rsvpLabel:'Kindly', rsvpHeadline:'RSVP', attendancePrompt:'Will you be joining us?', backTop:'↑ Back to top', attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP', formNotice:"Preview only — responses aren't being collected yet.", formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
@@ -1518,7 +1679,7 @@
           occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', /* Disabled navigation labels: navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി', */
           join:'സ്നേഹത്തോടെ ആഘോഷിക്കാൻ ക്ഷണിക്കുന്നു', heroDate:'24 ജനുവരി 2027', celebrateHeadline:'ആഘോഷിക്കാൻ', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
-          detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTime:'ഉച്ചയ്ക്ക് 12:00', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
+          saveDate:'തീയതി ഓർത്തുവെക്കൂ', countdownIntro:'നമ്മുടെ ദിനത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTime:'ഉച്ചയ്ക്ക് 12:00', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
           venueLabel:'വേദി', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
           rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', attendancePrompt:'നിങ്ങൾ പങ്കെടുക്കുമോ?', backTop:'↑ മുകളിലേക്ക്', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ', formNotice:'ഇത് മാതൃക മാത്രമാണ് — മറുപടികൾ ഇപ്പോൾ ശേഖരിക്കുന്നില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
           countdownLabel:'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ', passed:'ഇന്നാണ് ആ ദിവസം!'
