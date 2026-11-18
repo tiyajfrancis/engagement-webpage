@@ -1371,7 +1371,6 @@
         <h1 class="hero-couple-title reveal" id="main-title">
           <span data-i18n="arathy">Arathy</span><span class="hero-ampersand"> &amp; </span><span data-i18n="pranav">Pranav</span>
         </h1>
-        <p class="hero-new-beginning script reveal" data-i18n="newBeginning">A new beginning</p>
         <time class="hero-event-date reveal" datetime="2027-01-24" data-i18n="heroDate">24 January 2027</time>
         <div class="hero-star-rule reveal" aria-hidden="true"><span>✦</span></div>
         <p class="hero-event-time reveal" data-i18n="timeLine">Sunday at 12:00 PM</p>
@@ -1455,11 +1454,9 @@
 
     <div class="section-inner">
       <div class="venue-copy reveal">
-        <p class="micro" data-i18n="venueLabel">The venue</p>
-        <h2 class="display-title script" id="venue-title" data-i18n="venueHeadline">Let's meet here</h2>
+        <p class="micro" id="venue-title" data-i18n="venueLabel">The venue</p>
         <h3 class="venue-name" data-i18n="venueName">Prasanthi Hotel</h3>
         <p class="venue-city" data-i18n="venueCity">Kollam, Kerala</p>
-        <p class="venue-description" data-i18n="venueDescription">A lovely place to gather, celebrate, and share this special day with our favourite people.</p>
         <div class="venue-actions">
           <a class="qr-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=8.877032%2C76.593229" target="_blank" rel="noopener noreferrer" aria-label="Open directions to Prasanthi Hotel, Kollam in Google Maps"><img src="assets/venue-maps-qr.png" width="86" height="86" alt="QR code for directions to Prasanthi Hotel" loading="lazy"><span data-i18n="qrCaption">Scan for the venue location</span></a>
           <a class="button-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=8.877032%2C76.593229" target="_blank" rel="noopener noreferrer" data-i18n="directions">View location ↗</a>
@@ -1479,7 +1476,6 @@
       <div class="rsvp-copy reveal">
         <p class="micro" data-i18n="rsvpLabel">Kindly</p>
         <h2 class="display-title rsvp-heading" id="rsvp-title" data-i18n="rsvpHeadline">RSVP</h2>
-        <p class="body-copy" data-i18n="rsvpCopy">We'd love to celebrate with you.</p>
         <div class="divider" aria-hidden="true"><span>♡</span></div>
       </div>
       <form class="rsvp-form reveal" id="rsvp-form" aria-describedby="form-status">
@@ -1511,20 +1507,20 @@
       const translations = {
         en: {
           occasion:'Engagement ceremony', skip:'Skip to invitation', /* Disabled navigation labels: navHome:'Invitation', navStory:'Our Story', navDetails:'Details', navVenue:'Venue', navRsvp:'RSVP', */
-          join:'Join us to celebrate', heroDate:'24 January 2027', celebrateHeadline:'To celebrate', newBeginning:'A new beginning', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
+          join:'Join us to celebrate', heroDate:'24 January 2027', celebrateHeadline:'To celebrate', storyKicker:'Two main characters. One shared storyline.', pranav:'Pranav', arathy:'Arathy', month:'JAN', timeLine:'Sunday at 12:00 PM', intro:'Your presence, love, and blessings would mean the world to us.',
           storyLabel:'Our story', storyHeadline:'Two main characters.\nOne shared storyline.', storyLead:'Different paths, similar dreams and now a new chapter together.', storyBody:"We're so excited to have you with us as we begin this beautiful phase.", collageNote:'Same team, for all adventures', collageCaption:'A new chapter together',
           detailsLabel:'The details', saveDate:'Save the Date', sunday:'Sunday', january:'January', eventTime:'12:00 PM', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds',
-          venueLabel:'The venue', venueHeadline:"Let's meet here", venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', venueDescription:'A lovely place to gather, celebrate, and share this special day with our favourite people.', qrCaption:'Scan for the venue location', directions:'View location ↗',
-          rsvpLabel:'Kindly', rsvpHeadline:'RSVP', rsvpCopy:"We'd love to celebrate with you.", attendancePrompt:'Will you be joining us?', backTop:'↑ Back to top', attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP', formNotice:"Preview only — responses aren't being collected yet.", formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
+          venueLabel:'The venue', venueName:'Prasanthi Hotel', venueCity:'Kollam, Kerala', qrCaption:'Scan for the venue location', directions:'View location ↗',
+          rsvpLabel:'Kindly', rsvpHeadline:'RSVP', attendancePrompt:'Will you be joining us?', backTop:'↑ Back to top', attendYes:"I'll be there", attendNo:'Unable to attend', nameLabel:'Your name', namePlaceholder:'Your name', guestLabel:'Number of guests', messageLabel:'Message (optional)', messagePlaceholder:'Leave a message', sendRsvp:'Send RSVP', formNotice:"Preview only — responses aren't being collected yet.", formPreview:'This is a visual draft; connect an RSVP destination before collecting responses.',
           countdownLabel:'Countdown to the engagement', passed:'Today is the day!'
         },
         ml: {
           occasion:'വിവാഹനിശ്ചയം', skip:'ക്ഷണക്കത്തിലേക്ക് പോകുക', /* Disabled navigation labels: navHome:'ക്ഷണക്കത്ത്', navStory:'ഞങ്ങളുടെ കഥ', navDetails:'വിവരങ്ങൾ', navVenue:'വേദി', navRsvp:'മറുപടി', */
-          join:'സ്നേഹത്തോടെ ആഘോഷിക്കാൻ ക്ഷണിക്കുന്നു', heroDate:'24 ജനുവരി 2027', celebrateHeadline:'ആഘോഷിക്കാൻ', newBeginning:'ഒരു പുതിയ തുടക്കം', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
+          join:'സ്നേഹത്തോടെ ആഘോഷിക്കാൻ ക്ഷണിക്കുന്നു', heroDate:'24 ജനുവരി 2027', celebrateHeadline:'ആഘോഷിക്കാൻ', storyKicker:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ. ഒരേ കഥ.', pranav:'പ്രണവ്', arathy:'ആരതി', month:'ജനു', timeLine:'ഞായറാഴ്ച ഉച്ചയ്ക്ക് 12:00 മണിക്ക്', intro:'നിങ്ങളുടെ സാന്നിധ്യവും സ്നേഹവും അനുഗ്രഹവും ഞങ്ങൾക്ക് ഏറെ വിലപ്പെട്ടതാണ്.',
           storyLabel:'ഞങ്ങളുടെ കഥ', storyHeadline:'രണ്ട് പ്രധാന കഥാപാത്രങ്ങൾ.\nഒരേ കഥ.', storyLead:'വ്യത്യസ്ത വഴികൾ, സമാന സ്വപ്നങ്ങൾ, ഒരുമിച്ചൊരു പുതിയ അധ്യായം.', storyBody:'ഈ മനോഹരമായ പുതിയ ഘട്ടത്തിന്റെ തുടക്കത്തിൽ നിങ്ങളും ഞങ്ങളോടൊപ്പം ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു.', collageNote:'എല്ലാ യാത്രകൾക്കും ഒരേ ടീം', collageCaption:'ഒരുമിച്ചൊരു പുതിയ അധ്യായം',
           detailsLabel:'വിവരങ്ങൾ', saveDate:'തീയതി ഓർത്തുവെക്കൂ', sunday:'ഞായറാഴ്ച', january:'ജനുവരി', eventTime:'ഉച്ചയ്ക്ക് 12:00', days:'ദിവസങ്ങൾ', hours:'മണിക്കൂർ', minutes:'മിനിറ്റ്', seconds:'സെക്കൻഡ്',
-          venueLabel:'വേദി', venueHeadline:'ഇവിടെ കണ്ടുമുട്ടാം', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', venueDescription:'പ്രിയപ്പെട്ടവരോടൊപ്പം ഒത്തുചേർന്ന് ഈ പ്രത്യേക ദിവസം ആഘോഷിക്കാനുള്ള മനോഹരമായ ഇടം.', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
-          rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', rsvpCopy:'നിങ്ങളോടൊപ്പം ഈ സന്തോഷം ആഘോഷിക്കാൻ ഞങ്ങൾ ആഗ്രഹിക്കുന്നു.', attendancePrompt:'നിങ്ങൾ പങ്കെടുക്കുമോ?', backTop:'↑ മുകളിലേക്ക്', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ', formNotice:'ഇത് മാതൃക മാത്രമാണ് — മറുപടികൾ ഇപ്പോൾ ശേഖരിക്കുന്നില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
+          venueLabel:'വേദി', venueName:'പ്രശാന്തി ഹോട്ടൽ', venueCity:'കൊല്ലം, കേരളം', qrCaption:'വേദിയുടെ സ്ഥാനം കാണാൻ സ്കാൻ ചെയ്യൂ', directions:'ലൊക്കേഷൻ കാണുക ↗',
+          rsvpLabel:'ദയവായി', rsvpHeadline:'RSVP', attendancePrompt:'നിങ്ങൾ പങ്കെടുക്കുമോ?', backTop:'↑ മുകളിലേക്ക്', attendYes:'ഞാൻ പങ്കെടുക്കും', attendNo:'പങ്കെടുക്കാൻ കഴിയില്ല', nameLabel:'നിങ്ങളുടെ പേര്', namePlaceholder:'നിങ്ങളുടെ പേര്', guestLabel:'അതിഥികളുടെ എണ്ണം', messageLabel:'സന്ദേശം (ഐച്ഛികം)', messagePlaceholder:'ഒരു സന്ദേശം എഴുതൂ', sendRsvp:'മറുപടി അയക്കൂ', formNotice:'ഇത് മാതൃക മാത്രമാണ് — മറുപടികൾ ഇപ്പോൾ ശേഖരിക്കുന്നില്ല.', formPreview:'ഇത് ദൃശ്യ കരട് മാത്രമാണ്; മറുപടികൾ ശേഖരിക്കുന്നതിന് മുമ്പ് RSVP സംവിധാനം ബന്ധിപ്പിക്കണം.',
           countdownLabel:'വിവാഹനിശ്ചയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ', passed:'ഇന്നാണ് ആ ദിവസം!'
         }
       };
